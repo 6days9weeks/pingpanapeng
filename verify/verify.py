@@ -42,7 +42,7 @@ class Verify(commands.Cog):
                         title="Someone just verified!",
                         description=f"{message.author.mention} just verified!\n\nTheir ID is {message.author.id}\n\n Account created at **{message.author.created_at}**",
                         color=self.maincolor
-                    ) embed.set_thumbnail(url=message.author.avatar_url)
+                    )
                     await log_channel.send(embed=embed)
                     await asyncio.sleep(2)
                     await message.delete()
