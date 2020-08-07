@@ -40,16 +40,16 @@ class Verify(commands.Cog):
                     await message.add_reaction("\U00002705")
                     embed = discord.Embed(
                         title="Someone just verified!",
-                        description=f"{message.author.mention} just verified!\n\nHis ID is {message.author.id}\n\nThe account age is {message.author.created_at}\nThe channel ID is {message.channel.id}\nThe message was sent at {message.created_at}",
+                        description=f"{message.author.mention} just verified!\n\nTheir ID is {message.author.id}\n\n Account created at **{message.author.created_at}**",
                         color=self.maincolor
-                    )
+                    ) embed.set_thumbnail(url=message.author.avatar_url)
                     await log_channel.send(embed=embed)
                     await asyncio.sleep(2)
                     await message.delete()
                     try:
                         embed = discord.Embed(
                             title="Verification",
-                            description="You are now verified in Chiasa Discord Server!",
+                            description="You are now verified in Chiasa Discord Server! Get some roles from <#711673102534181005>",
                             color=self.maincolor
                         )
                         await message.author.send(embed=embed)
