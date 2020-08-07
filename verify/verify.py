@@ -40,7 +40,7 @@ class Verify(commands.Cog):
                     await message.add_reaction("\U00002705")
                     embed = discord.Embed(
                         title="Someone just verified!",
-                        description=f"{message.author.mention} just verified!\n\nHis ID is {message.author.id}\n\nThe message ID is {message.id}\nThe channel ID is {message.channel.id}\nThe message was sent at {message.created_at}",
+                        description=f"{message.author.mention} just verified!\n\nHis ID is {message.author.id}\n\nThe account age is {message.author.created_at}\nThe channel ID is {message.channel.id}\nThe message was sent at {message.created_at}",
                         color=self.maincolor
                     )
                     await log_channel.send(embed=embed)
