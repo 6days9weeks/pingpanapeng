@@ -15,4 +15,4 @@ class BoostPlugin(commands.Cog):
             await m.add_reaction("<a:Heartanimated:717651074126708756>")
             
 def setup(bot):
-    bot.add_cog(BoostPlugin(bot)
+    bot.add_cog(Boost(bot)
