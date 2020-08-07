@@ -18,7 +18,7 @@ class Verify(commands.Cog):
     async def sendverifymsg(self, ctx):
         embed = discord.Embed(
             title="**Verification**",
-            description="To gain access to Chiasa Discord Server, you will have to verify.\n\nVerifying means that you have agreed to our Rules and Guidelines\n\nOur Rules and Guidelines can be found in <#711667049465905302> and check for info on our server <#711667131820933210>!\n\nTo verify, please type `verify` in this channel!",
+            description="To gain access to Chiasa Discord Server, you will have to verify.\n\nVerifying means that you have agreed to our Rules and Guidelines\n\nOur Rules and Guidelines can be found in <#711667049465905302> and for info on our server check <#711667131820933210>!\n\nTo verify, please type `verify` in this channel!",
             color=self.maincolor
         )
         await ctx.send(embed=embed)
