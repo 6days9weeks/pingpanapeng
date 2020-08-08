@@ -10,7 +10,7 @@ class Boost(commands.Cog):
         print(message.type)
         if message.type == discord.MessageType.premium_guild_subscription:
            embed = discord.Embed(title=f"**Nitro Boost**", description=f"Thank you so much for boosting <a:BoostingAnimated:717651091260702751> !", color=0xff0000)
-            m = await log_channel.send(embed=embed)
+            m = await message.channel.send(embed=embed)
             await m.add_reaction("<a:Heartanimated:717651074126708756>")
             
 def setup(bot):
