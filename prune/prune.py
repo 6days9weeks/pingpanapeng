@@ -6,12 +6,12 @@ from core.models import PermissionLevel
 class prune(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-    @commands.command(aliases = ["clear"])
+    @commands.command(aliases = ["clean"])
     @checks.has_permissions(PermissionLevel.OWNER)
-    async def purge(self, ctx, amount = 10):
-        max_purge = 2000
-        if amount >= 1 and amount <= max_purge:
-            await ctx.channel.purge(limit = amount + 1)
+    async def prune(self, ctx, amount = 10):
+        max_prune = 2000
+        if amount >= 1 and amount <= max_prune:
+            await ctx.channel.prune(limit = amount + 1)
             embed = discord.Embed(
                 title = "Purge",
                 description = f"Purged {amount} message(s)!",
@@ -36,7 +36,7 @@ class prune(commands.Cog):
             )
             await ctx.send(embed = embed, delete_after = 5.0)
             await ctx.message.delete()
-        if amount > max_purge:
+        if amount > max_prune:
             embed = discord.Embed(
                 title = "Purge Error",
                 description = f"You must purge less then {amount} messages!",
