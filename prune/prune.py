@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-class Prune(commands.Cog):
+class prune(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     @commands.command(aliases = ["clear"])
@@ -43,4 +43,4 @@ class Prune(commands.Cog):
             await ctx.send(embed = embed, delete_after = 5.0)
             await ctx.message.delete()
 def setup(bot):
-    bot.add_cog(Prune(bot))
+    bot.add_cog(prune(bot))
