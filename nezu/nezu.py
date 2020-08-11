@@ -6,7 +6,7 @@ from core import checks
 from core.models import PermissionLevel
 
 
-class nezubabey(commands.Cog):
+class nezu(commands.Cog):
     """
    A brief explanation on how the bot works.
     """
