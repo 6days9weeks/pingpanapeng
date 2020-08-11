@@ -14,7 +14,7 @@ class howto(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(aliases=["howto"])
+    @commands.command(aliases=["idkhowthisworks"])
     @checks.has_permissions(PermissionLevel.SUPPORTER)
     async def rank(self, ctx):
         """A brief explanation on how the bot works"""
