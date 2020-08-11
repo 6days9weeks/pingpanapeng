@@ -28,4 +28,4 @@ class nezubabey(commands.Cog):
         return await ctx.send(embed=embed)
 
 def setup(bot):
-    bot.add_cog(nezubabey(bot))
+    bot.add_cog(nezu(bot))
