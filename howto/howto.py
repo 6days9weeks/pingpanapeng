@@ -14,9 +14,9 @@ class howto(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(aliases=["idkhowthisworks"])
+    @commands.command(aliases=["howto"])
     @checks.has_permissions(PermissionLevel.SUPPORTER)
-    async def idkhelp(self, ctx):
+    async def okthisisweird(self, ctx):
         """A brief explanation on how the bot works"""
         embed = discord.Embed(
             title="How To Use Nezubabey"
