@@ -11,7 +11,6 @@ class howto(commands.Cog):
        
 
      @commands.command(name="howto")
-    @commands.has_permissions(supporter=True)
     async def howto(self, ctx):
         embed = discord.Embed(
             title="**How To Use Nezubabey**",
