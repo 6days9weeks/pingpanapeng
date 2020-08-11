@@ -13,7 +13,8 @@ class Test1(commands.Cog):
             color=0xffcff2,
             timestamp=ctx.message.created_at
         )
-       await ctx.send(embed=embed)
+       embed.set_footer(text="Test", icon_url="")
+        await ctx.send(embed=embed)
         
         
 def setup(bot):
