@@ -1,6 +1,10 @@
 import discord
 from discord.ext import commands
 
+class Afk(commands.Cog):
+    def __init__(self, bot):
+        self.bot = bot
+
 @commands.command()
 async def afk(ctx, mins):
     current_nick = ctx.author.nick
@@ -17,4 +21,4 @@ async def afk(ctx, mins):
             await ctx.send(f"{ctx.author.mention} is no longer AFK")
             break
 def setup(bot):
-    bot.add_cog(MyCog(bot))
+    bot.add_cog(Afk(bot))
