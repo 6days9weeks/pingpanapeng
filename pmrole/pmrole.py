@@ -39,7 +39,7 @@ class PMRole(commands.Cog):
             roles = ((await self.db.find_one({'_id': 'config'})) or {})['roles']
             try:
                 await ctx.guild.get_member(ctx.thread.recipient.id).add_roles(ctx.guild.get_role(int(roles['pm'])), reason="Role added by "+ctx.author.display_name+" ("+ctx.author.name+"#"+ctx.author.discriminator+") ["+str(ctx.author.id)+"]")
-                await ctx.thread.recipient.edit(nick=f"{ctx.thread.recipient.name} | PM")
+                await ctx.guild.get_member(ctx.thread.recipient.id).edit(nick=f"{ctx.thread.recipient.name} | PM")
                 await ctx.send(embed=discord.Embed(description="Added <@&"+roles['pm']+"> to "+ctx.thread.recipient.mention, color=0xD0B8D6))
             except discord.Forbidden:
                 await ctx.send(embed=discord.Embed(description="Failed to add <@&"+roles['pm']+"> to "+ctx.thread.recipient.mention, color=0xD0B8D6))
@@ -55,7 +55,7 @@ class PMRole(commands.Cog):
             roles = ((await self.db.find_one({'_id': 'config'})) or {})['roles']
             try:
                 await ctx.guild.get_member(ctx.thread.recipient.id).remove_roles(ctx.guild.get_role(int(roles['pm'])), reason="Role removed by "+ctx.author.display_name+" ("+ctx.author.name+"#"+ctx.author.discriminator+") ["+str(ctx.author.id)+"]") 
-                await ctx.thread.recipient.edit(nick=f"{ctx.thread.recipient.name}")
+                await ctx.guild.get_member(ctx.thread.recipient.id).edit(nick=f"{ctx.thread.recipient.name}")
                 await ctx.send(embed=discord.Embed(description="Removed <@&"+roles['pm']+"> from "+ctx.thread.recipient.mention, color=0xD0B8D6))
             except discord.Forbidden:
                 await ctx.send(embed=discord.Embed(description="Failed to remove <@&"+roles['pm']+"> from "+ctx.thread.recipient.mention, color=0xD0B8D6))
