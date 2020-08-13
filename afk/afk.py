@@ -5,7 +5,7 @@ class Afk(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-@commands.command()
+@bot.command()
 async def afk(ctx, mins):
     current_nick = ctx.author.nick
     await ctx.send(f"{ctx.author.mention} has gone afk for {mins} minutes.")
