@@ -21,7 +21,7 @@ class PMRole(commands.Cog):
 
     @pm_role.command(name="set")
     @checks.has_permissions(PermissionLevel.ADMIN)
-    async def partner_role_set(self, ctx, *, role: discord.Role):
+    async def pm_role_set(self, ctx, *, role: discord.Role):
         """Sets the pm role"""
         await self.db.find_one_and_update(
             {'_id': 'config'},
