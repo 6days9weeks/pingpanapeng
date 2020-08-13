@@ -15,9 +15,9 @@ class PMRole(commands.Cog):
         """Checks the pm role"""
         try:
             roles = ((await self.db.find_one({'_id': 'config'})) or {})['roles']
-            await ctx.send(embed=discord.Embed(description="The pm role is <@&"+roles['pm']+">", color=0x9b59b6))
+            await ctx.send(embed=discord.Embed(description="The pm role is <@&"+roles['pm']+">", color=0xD0B8D6))
         except KeyError:
-            await ctx.send(embed=discord.Embed(description="There isn't a pm role set\nAdmins can set it with `pm_role set [role]`", color=0x9b59b6))
+            await ctx.send(embed=discord.Embed(description="There isn't a pm role set\nAdmins can set it with `pm_role set [role]`", color=0xD0B8D6))
 
     @pm_role.command(name="set")
     @checks.has_permissions(PermissionLevel.ADMIN)
@@ -28,7 +28,7 @@ class PMRole(commands.Cog):
             {'$set': {'roles': {'pm': str(role.id)}}},
             upsert=True
         )
-        await ctx.send(embed=discord.Embed(description="The pm role is now "+role.mention, color=0x9b59b6))
+        await ctx.send(embed=discord.Embed(description="The pm role is now "+role.mention, color=0xD0B8D6))
     
     @commands.command(aliases=["apm", "addpm"])
     @checks.has_permissions(PermissionLevel.SUPPORTER)
@@ -39,11 +39,11 @@ class PMRole(commands.Cog):
             roles = ((await self.db.find_one({'_id': 'config'})) or {})['roles']
             try:
                 await ctx.guild.get_member(ctx.thread.recipient.id).add_roles(ctx.guild.get_role(int(roles['pm'])), reason="Role added by "+ctx.author.display_name+" ("+ctx.author.name+"#"+ctx.author.discriminator+") ["+str(ctx.author.id)+"]")
-                await ctx.send(embed=discord.Embed(description="Added <@&"+roles['pm']+"> to "+ctx.thread.recipient.mention, color=0x9b59b6))
+                await ctx.send(embed=discord.Embed(description="Added <@&"+roles['pm']+"> to "+ctx.thread.recipient.mention, color=0xD0B8D6))
             except discord.Forbidden:
-                await ctx.send(embed=discord.Embed(description="Failed to add <@&"+roles['pm']+"> to "+ctx.thread.recipient.mention, color=0xff0000))
+                await ctx.send(embed=discord.Embed(description="Failed to add <@&"+roles['pm']+"> to "+ctx.thread.recipient.mention, color=0xD0B8D6))
         except KeyError:
-            await ctx.send(embed=discord.Embed(description="Pm role not found", color=0xff0000))
+            await ctx.send(embed=discord.Embed(description="Pm role not found", color=0xD0B8D6))
     
     @commands.command(aliases=["rpm", "removepm"])
     @checks.has_permissions(PermissionLevel.SUPPORTER)
@@ -54,11 +54,11 @@ class PMRole(commands.Cog):
             roles = ((await self.db.find_one({'_id': 'config'})) or {})['roles']
             try:
                 await ctx.guild.get_member(ctx.thread.recipient.id).remove_roles(ctx.guild.get_role(int(roles['pm'])), reason="Role removed by "+ctx.author.display_name+" ("+ctx.author.name+"#"+ctx.author.discriminator+") ["+str(ctx.author.id)+"]") 
-                await ctx.send(embed=discord.Embed(description="Removed <@&"+roles['pm']+"> from "+ctx.thread.recipient.mention, color=0x9b59b6))
+                await ctx.send(embed=discord.Embed(description="Removed <@&"+roles['pm']+"> from "+ctx.thread.recipient.mention, color=0xD0B8D6))
             except discord.Forbidden:
-                await ctx.send(embed=discord.Embed(description="Failed to remove <@&"+roles['pm']+"> from "+ctx.thread.recipient.mention, color=0xff0000))
+                await ctx.send(embed=discord.Embed(description="Failed to remove <@&"+roles['pm']+"> from "+ctx.thread.recipient.mention, color=0xD0B8D6))
         except KeyError:
-            await ctx.send(embed=discord.Embed(description="Pm role not found", color=0xff0000))
+            await ctx.send(embed=discord.Embed(description="Pm role not found", color=0xD0B8D6))
 
 def setup(bot):
     bot.add_cog(PMRole(bot))
