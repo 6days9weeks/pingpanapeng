@@ -14,7 +14,7 @@ class RedditScroller(commands.Cog):
     @commands.command(aliases = ['memescroll'])
     async def memescroller(self, ctx, max=30):
         """
-        Scroll through r/dankmemes.
+        Scroll through r/Animemes.
         **Usage**:
         [p]memescroll 12 (returns 12 memes)
         [p]memescroll (returns 30 memes)
