@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 from discord.ext import commands
 
 
-class LoveCalculator(Cog):
+class LoveCalculator(commands.Cog):
     """Calculate the love percentage for two users!"""
 
     def __init__(self, bot):
