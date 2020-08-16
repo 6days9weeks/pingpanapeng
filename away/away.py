@@ -613,4 +613,6 @@ class Away(commands.Cog):
             await ctx.send(embed=em)
         else:
             await ctx.send(f"{author.display_name} away settings\n" + msg)
+def setup(bot):
+    bot.add_cog(Away(bot))
 
