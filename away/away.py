@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from core import Config, checks
+from core import checks
 from typing import Optional
 import datetime
 import re
