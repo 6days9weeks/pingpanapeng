@@ -523,7 +523,7 @@ class Away(commands.Cog):
         await ctx.send(msg)
 
     @commands.command(name="toggleaway")
-    @checks.admin_or_permissions(administrator=True)
+    @commands.has_permissions(administrator=True)
     async def _ignore(self, ctx):
         """
         Toggle away messages on the whole server.
@@ -544,7 +544,7 @@ class Away(commands.Cog):
         await ctx.send(message)
 
     @commands.command()
-    @checks.admin_or_permissions(administrator=True)
+    @commands.has_permissions(administrator=True)
     async def awaytextonly(self, ctx):
         """
         Toggle forcing the guild's away messages to be text only.
