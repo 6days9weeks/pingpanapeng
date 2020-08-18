@@ -61,6 +61,93 @@ class PMRole(commands.Cog):
                 await ctx.send(embed=discord.Embed(description="Failed to remove <@&"+roles['pm']+"> from "+ctx.thread.recipient.mention, color=0xD0B8D6))
         except KeyError:
             await ctx.send(embed=discord.Embed(description="Pm role not found", color=0xD0B8D6))
+class AMRole(commands.Cog):
+    """Provides commands for giving/taking away am role in a thread"""
+    def __init__(self, bot):
+        self.bot = bot
+        self.db = bot.plugin_db.get_partition(self)
 
+    @commands.group(aliases=["amrole"], invoke_without_command=True)
+    async def am_role(self, ctx):
+        """Checks the am role"""
+        try:
+            roles = ((await self.db.find_one({'_id': 'config'})) or {})['roles']
+            await ctx.send(embed=discord.Embed(description="The am role is <@&"+roles['pm']+">", color=0xD0B8D6))
+        except KeyError:
+            await ctx.send(embed=discord.Embed(description="There isn't a am role set\nAdmins can set it with `am_role set [role]`", color=0xD0B8D6))
+
+    @am_role.command(name="set")
+    @checks.has_permissions(PermissionLevel.ADMIN)
+    async def am_role_set(self, ctx, *, role: discord.Role):
+        """Sets the am role"""
+        await self.db.find_one_and_update(
+            {'_id': 'config'},
+            {'$set': {'roles': {'am': str(role.id)}}},
+            upsert=True
+        )
+        await ctx.send(embed=discord.Embed(description="The am role is now "+role.mention, color=0xD0B8D6))
+    
+    @commands.command(aliases=["aam", "addam"])
+    @checks.has_permissions(PermissionLevel.SUPPORTER)
+    @checks.thread_only()
+    async def add_am(self, ctx):
+        """Adds the am role to the thread recipient"""
+        try:
+            roles = ((await self.db.find_one({'_id': 'config'})) or {})['roles']
+            try:
+                await ctx.guild.get_member(ctx.thread.recipient.id).add_roles(ctx.guild.get_role(int(roles['am'])), reason="Role added by "+ctx.author.display_name+" ("+ctx.author.name+"#"+ctx.author.discriminator+") ["+str(ctx.author.id)+"]")
+                await ctx.guild.get_member(ctx.thread.recipient.id).edit(nick=f"{ctx.thread.recipient.name} | AM")
+                await ctx.send(embed=discord.Embed(description="Added <@&"+roles['am']+"> to "+ctx.thread.recipient.mention, color=0xD0B8D6))
+            except discord.Forbidden:
+                await ctx.send(embed=discord.Embed(description="Failed to add <@&"+roles['am']+"> to "+ctx.thread.recipient.mention, color=0xD0B8D6))
+        except KeyError:
+            await ctx.send(embed=discord.Embed(description="Am role not found", color=0xD0B8D6))
+    
+    @commands.command(aliases=["ram", "removeam"])
+    @checks.has_permissions(PermissionLevel.SUPPORTER)
+    @checks.thread_only()
+    async def remove_pm(self, ctx):
+        """Removes the am role from the thread recipient"""
+        try:
+            roles = ((await self.db.find_one({'_id': 'config'})) or {})['roles']
+            try:
+                await ctx.guild.get_member(ctx.thread.recipient.id).remove_roles(ctx.guild.get_role(int(roles['am'])), reason="Role removed by "+ctx.author.display_name+" ("+ctx.author.name+"#"+ctx.author.discriminator+") ["+str(ctx.author.id)+"]") 
+                await ctx.guild.get_member(ctx.thread.recipient.id).edit(nick=f"{ctx.thread.recipient.name}")
+                await ctx.send(embed=discord.Embed(description="Removed <@&"+roles['am']+"> from "+ctx.thread.recipient.mention, color=0xD0B8D6))
+            except discord.Forbidden:
+                await ctx.send(embed=discord.Embed(description="Failed to remove <@&"+roles['am']+"> from "+ctx.thread.recipient.mention, color=0xD0B8D6))
+        except KeyError:
+            await ctx.send(embed=discord.Embed(description="Am role not found", color=0xD0B8D6))
+@commands.command(aliases=["aapm", "addapm"])
+    @checks.has_permissions(PermissionLevel.SUPPORTER)
+    @checks.thread_only()
+    async def add_am(self, ctx):
+        """Adds the am and pm role to the thread recipient"""
+        try:
+            roles = ((await self.db.find_one({'_id': 'config'})) or {})['roles']
+            try:
+                await ctx.guild.get_member(ctx.thread.recipient.id).add_roles(ctx.guild.get_role(int(roles['am','pm'])), reason="Role added by "+ctx.author.display_name+" ("+ctx.author.name+"#"+ctx.author.discriminator+") ["+str(ctx.author.id)+"]")
+                await ctx.guild.get_member(ctx.thread.recipient.id).edit(nick=f"{ctx.thread.recipient.name} | APM")
+                await ctx.send(embed=discord.Embed(description="Added <@&"+roles['am']+"> to "+ctx.thread.recipient.mention, color=0xD0B8D6))
+            except discord.Forbidden:
+                await ctx.send(embed=discord.Embed(description="Failed to add <@&"+roles['am','pm']+"> to "+ctx.thread.recipient.mention, color=0xD0B8D6))
+        except KeyError:
+            await ctx.send(embed=discord.Embed(description="Am and pm role not found", color=0xD0B8D6))
+    
+    @commands.command(aliases=["rapm", "removeapm"])
+    @checks.has_permissions(PermissionLevel.SUPPORTER)
+    @checks.thread_only()
+    async def remove_pm(self, ctx):
+        """Removes the am and pm role from the thread recipient"""
+        try:
+            roles = ((await self.db.find_one({'_id': 'config'})) or {})['roles']
+            try:
+                await ctx.guild.get_member(ctx.thread.recipient.id).remove_roles(ctx.guild.get_role(int(roles['am','pm'])), reason="Role removed by "+ctx.author.display_name+" ("+ctx.author.name+"#"+ctx.author.discriminator+") ["+str(ctx.author.id)+"]") 
+                await ctx.guild.get_member(ctx.thread.recipient.id).edit(nick=f"{ctx.thread.recipient.name}")
+                await ctx.send(embed=discord.Embed(description="Removed <@&"+roles['am','pm']+"> from "+ctx.thread.recipient.mention, color=0xD0B8D6))
+            except discord.Forbidden:
+                await ctx.send(embed=discord.Embed(description="Failed to remove <@&"+roles['am','pm']+"> from "+ctx.thread.recipient.mention, color=0xD0B8D6))
+        except KeyError:
+            await ctx.send(embed=discord.Embed(description="Am and pm role not found", color=0xD0B8D6))
 def setup(bot):
     bot.add_cog(PMRole(bot))
