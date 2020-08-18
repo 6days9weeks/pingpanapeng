@@ -25,7 +25,7 @@ class PMRole(commands.Cog):
         """Sets the pm role"""
         await self.db.find_one_and_update(
             {'_id': 'config'},
-            {'$set': {'roles': {'pm': str(role.id)}}},
+            {'$set': {'pmrole': {'pm': str(role.id)}}},
             upsert=True
         )
         await ctx.send(embed=discord.Embed(description="The pm role is now "+role.mention, color=0xD0B8D6))
@@ -36,7 +36,7 @@ class PMRole(commands.Cog):
     async def add_pm(self, ctx):
         """Adds the pm role to the thread recipient"""
         try:
-            roles = ((await self.db.find_one({'_id': 'config'})) or {})['roles']
+            roles = ((await self.db.find_one({'_id': 'config'})) or {})['pmrole']
             try:
                 await ctx.guild.get_member(ctx.thread.recipient.id).add_roles(ctx.guild.get_role(int(roles['pm'])), reason="Role added by "+ctx.author.display_name+" ("+ctx.author.name+"#"+ctx.author.discriminator+") ["+str(ctx.author.id)+"]")
                 await ctx.guild.get_member(ctx.thread.recipient.id).edit(nick=f"{ctx.thread.recipient.name} | PM")
@@ -52,7 +52,7 @@ class PMRole(commands.Cog):
     async def remove_pm(self, ctx):
         """Removes the pm role from the thread recipient"""
         try:
-            roles = ((await self.db.find_one({'_id': 'config'})) or {})['roles']
+            roles = ((await self.db.find_one({'_id': 'config'})) or {})['pmrole']
             try:
                 await ctx.guild.get_member(ctx.thread.recipient.id).remove_roles(ctx.guild.get_role(int(roles['pm'])), reason="Role removed by "+ctx.author.display_name+" ("+ctx.author.name+"#"+ctx.author.discriminator+") ["+str(ctx.author.id)+"]") 
                 await ctx.guild.get_member(ctx.thread.recipient.id).edit(nick=f"{ctx.thread.recipient.name}")
@@ -66,7 +66,7 @@ class PMRole(commands.Cog):
     async def am_role(self, ctx):
         """Checks the am role"""
         try:
-            roles = ((await self.db.find_one({'_id': 'config'})) or {})['roles']
+            roles = ((await self.db.find_one({'_id': 'config'})) or {})['amrole']
             await ctx.send(embed=discord.Embed(description="The am role is <@&"+roles['am']+">", color=0xD0B8D6))
         except KeyError:
             await ctx.send(embed=discord.Embed(description="There isn't a am role set\nAdmins can set it with `am_role set [role]`", color=0xD0B8D6))
@@ -77,7 +77,7 @@ class PMRole(commands.Cog):
         """Sets the am role"""
         await self.db.find_one_and_update(
             {'_id': 'config'},
-            {'$set': {'roless': {'am': str(role.id)}}},
+            {'$set': {'amrole': {'am': str(role.id)}}},
             upsert=True
         )
         await ctx.send(embed=discord.Embed(description="The am role is now "+role.mention, color=0xD0B8D6))
@@ -88,7 +88,7 @@ class PMRole(commands.Cog):
     async def add_am(self, ctx):
         """Adds the am role to the thread recipient"""
         try:
-            roles = ((await self.db.find_one({'_id': 'config'})) or {})['roles']
+            roles = ((await self.db.find_one({'_id': 'config'})) or {})['amrole']
             try:
                 await ctx.guild.get_member(ctx.thread.recipient.id).add_roles(ctx.guild.get_role(int(roles['am'])), reason="Role added by "+ctx.author.display_name+" ("+ctx.author.name+"#"+ctx.author.discriminator+") ["+str(ctx.author.id)+"]")
                 await ctx.guild.get_member(ctx.thread.recipient.id).edit(nick=f"{ctx.thread.recipient.name} | AM")
@@ -104,7 +104,7 @@ class PMRole(commands.Cog):
     async def remove_am(self, ctx):
         """Removes the am role from the thread recipient"""
         try:
-            roles = ((await self.db.find_one({'_id': 'config'})) or {})['roles']
+            roles = ((await self.db.find_one({'_id': 'config'})) or {})['amrole']
             try:
                 await ctx.guild.get_member(ctx.thread.recipient.id).remove_roles(ctx.guild.get_role(int(roles['am'])), reason="Role removed by "+ctx.author.display_name+" ("+ctx.author.name+"#"+ctx.author.discriminator+") ["+str(ctx.author.id)+"]") 
                 await ctx.guild.get_member(ctx.thread.recipient.id).edit(nick=f"{ctx.thread.recipient.name}")
@@ -120,7 +120,7 @@ class PMRole(commands.Cog):
     async def add_aam(self, ctx):
         """Adds the am and pm role to the thread recipient"""
         try:
-            roles = ((await self.db.find_one({'_id': 'config'})) or {})['roles']
+            roles = ((await self.db.find_one({'_id': 'config'})) or {})['pmrole','amrole']
             try:
                 await ctx.guild.get_member(ctx.thread.recipient.id).add_roles(ctx.guild.get_role(int(roles['am','pm'])), reason="Role added by "+ctx.author.display_name+" ("+ctx.author.name+"#"+ctx.author.discriminator+") ["+str(ctx.author.id)+"]")
                 await ctx.guild.get_member(ctx.thread.recipient.id).edit(nick=f"{ctx.thread.recipient.name} | APM")
@@ -137,7 +137,7 @@ class PMRole(commands.Cog):
     async def remove_apm(self, ctx):
         """Removes the am and pm role from the thread recipient"""
         try:
-            roles = ((await self.db.find_one({'_id': 'config'})) or {})['roles']
+            roles = ((await self.db.find_one({'_id': 'config'})) or {})['pmrole','amrole']
             try:
                 await ctx.guild.get_member(ctx.thread.recipient.id).remove_roles(ctx.guild.get_role(int(roles['am','pm'])), reason="Role removed by "+ctx.author.display_name+" ("+ctx.author.name+"#"+ctx.author.discriminator+") ["+str(ctx.author.id)+"]") 
                 await ctx.guild.get_member(ctx.thread.recipient.id).edit(nick=f"{ctx.thread.recipient.name}")
