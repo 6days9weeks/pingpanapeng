@@ -101,7 +101,7 @@ class PMRole(commands.Cog):
     @commands.command(aliases=["ram", "removeam"])
     @checks.has_permissions(PermissionLevel.SUPPORTER)
     @checks.thread_only()
-    async def remove_pm(self, ctx):
+    async def remove_am(self, ctx):
         """Removes the am role from the thread recipient"""
         try:
             roles = ((await self.db.find_one({'_id': 'config'})) or {})['roles']
@@ -117,7 +117,7 @@ class PMRole(commands.Cog):
     @commands.command(aliases=["aapm", "addapm"])
     @checks.has_permissions(PermissionLevel.SUPPORTER)
     @checks.thread_only()
-    async def add_am(self, ctx):
+    async def add_aam(self, ctx):
         """Adds the am and pm role to the thread recipient"""
         try:
             roles = ((await self.db.find_one({'_id': 'config'})) or {})['roles']
@@ -134,7 +134,7 @@ class PMRole(commands.Cog):
     @commands.command(aliases=["rapm", "removeapm"])
     @checks.has_permissions(PermissionLevel.SUPPORTER)
     @checks.thread_only()
-    async def remove_pm(self, ctx):
+    async def remove_apm(self, ctx):
         """Removes the am and pm role from the thread recipient"""
         try:
             roles = ((await self.db.find_one({'_id': 'config'})) or {})['roles']
