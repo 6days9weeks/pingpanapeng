@@ -67,7 +67,7 @@ class AMRole(commands.Cog):
         self.bot = bot
         self.db = bot.plugin_db.get_partition(self)
 
-    @commands.group(aliases=["amrole"], invoke_without_command=True)
+@commands.group(aliases=["amrole"], invoke_without_command=True)
     async def am_role(self, ctx):
         """Checks the am role"""
         try:
@@ -76,7 +76,7 @@ class AMRole(commands.Cog):
         except KeyError:
             await ctx.send(embed=discord.Embed(description="There isn't a am role set\nAdmins can set it with `am_role set [role]`", color=0xD0B8D6))
 
-    @am_role.command(name="set")
+@am_role.command(name="set")
     @checks.has_permissions(PermissionLevel.ADMIN)
     async def am_role_set(self, ctx, *, role: discord.Role):
         """Sets the am role"""
@@ -87,7 +87,7 @@ class AMRole(commands.Cog):
         )
         await ctx.send(embed=discord.Embed(description="The am role is now "+role.mention, color=0xD0B8D6))
     
-    @commands.command(aliases=["aam", "addam"])
+@commands.command(aliases=["aam", "addam"])
     @checks.has_permissions(PermissionLevel.SUPPORTER)
     @checks.thread_only()
     async def add_am(self, ctx):
@@ -103,7 +103,7 @@ class AMRole(commands.Cog):
         except KeyError:
             await ctx.send(embed=discord.Embed(description="Am role not found", color=0xD0B8D6))
     
-    @commands.command(aliases=["ram", "removeam"])
+@commands.command(aliases=["ram", "removeam"])
     @checks.has_permissions(PermissionLevel.SUPPORTER)
     @checks.thread_only()
     async def remove_pm(self, ctx):
@@ -118,6 +118,7 @@ class AMRole(commands.Cog):
                 await ctx.send(embed=discord.Embed(description="Failed to remove <@&"+roles['am']+"> from "+ctx.thread.recipient.mention, color=0xD0B8D6))
         except KeyError:
             await ctx.send(embed=discord.Embed(description="Am role not found", color=0xD0B8D6))
+
 @commands.command(aliases=["aapm", "addapm"])
     @checks.has_permissions(PermissionLevel.SUPPORTER)
     @checks.thread_only()
@@ -134,7 +135,8 @@ class AMRole(commands.Cog):
         except KeyError:
             await ctx.send(embed=discord.Embed(description="Am and pm role not found", color=0xD0B8D6))
     
-    @commands.command(aliases=["rapm", "removeapm"])
+    
+@commands.command(aliases=["rapm", "removeapm"])
     @checks.has_permissions(PermissionLevel.SUPPORTER)
     @checks.thread_only()
     async def remove_pm(self, ctx):
