@@ -76,8 +76,8 @@ class PMRole(commands.Cog):
     async def am_role_set(self, ctx, *, role: discord.Role):
         """Sets the am role"""
         await self.db.find_one_and_update(
-            {'_id': 'config2'},
-            {'$set': {'roles': {'am': str(role.id)}}},
+            {'_id': 'config'},
+            {'$set': {'roless': {'am': str(role.id)}}},
             upsert=True
         )
         await ctx.send(embed=discord.Embed(description="The am role is now "+role.mention, color=0xD0B8D6))
