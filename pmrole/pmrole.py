@@ -120,11 +120,11 @@ class PMRole(commands.Cog):
     async def add_aam(self, ctx):
         """Adds the am and pm role to the thread recipient"""
         try:
-            roles = ((await self.db.find_one({'_id': 'config'})) or {})['pmrole','amrole']
+            roles = ((await self.db.find_one({'_id': 'config'}))
             try:
                 await ctx.guild.get_member(ctx.thread.recipient.id).add_roles(ctx.guild.get_role(int(roles['am','pm'])), reason="Role added by "+ctx.author.display_name+" ("+ctx.author.name+"#"+ctx.author.discriminator+") ["+str(ctx.author.id)+"]")
                 await ctx.guild.get_member(ctx.thread.recipient.id).edit(nick=f"{ctx.thread.recipient.name} | APM")
-                await ctx.send(embed=discord.Embed(description="Added <@&"+roles['am']+"> to "+ctx.thread.recipient.mention, color=0xD0B8D6))
+                await ctx.send(embed=discord.Embed(description="Added <@&"+roles['am','pm']+"> to "+ctx.thread.recipient.mention, color=0xD0B8D6))
             except discord.Forbidden:
                 await ctx.send(embed=discord.Embed(description="Failed to add <@&"+roles['am','pm']+"> to "+ctx.thread.recipient.mention, color=0xD0B8D6))
         except KeyError:
@@ -137,7 +137,7 @@ class PMRole(commands.Cog):
     async def remove_apm(self, ctx):
         """Removes the am and pm role from the thread recipient"""
         try:
-            roles = ((await self.db.find_one({'_id': 'config'})) or {})['pmrole','amrole']
+            roles = ((await self.db.find_one({'_id': 'config'}))
             try:
                 await ctx.guild.get_member(ctx.thread.recipient.id).remove_roles(ctx.guild.get_role(int(roles['am','pm'])), reason="Role removed by "+ctx.author.display_name+" ("+ctx.author.name+"#"+ctx.author.discriminator+") ["+str(ctx.author.id)+"]") 
                 await ctx.guild.get_member(ctx.thread.recipient.id).edit(nick=f"{ctx.thread.recipient.name}")
