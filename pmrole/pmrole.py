@@ -67,7 +67,7 @@ class PMRole(commands.Cog):
         """Checks the am role"""
         try:
             roles = ((await self.db.find_one({'_id': 'config'})) or {})['roles']
-            await ctx.send(embed=discord.Embed(description="The am role is <@&"+roles['pm']+">", color=0xD0B8D6))
+            await ctx.send(embed=discord.Embed(description="The am role is <@&"+roles['am']+">", color=0xD0B8D6))
         except KeyError:
             await ctx.send(embed=discord.Embed(description="There isn't a am role set\nAdmins can set it with `am_role set [role]`", color=0xD0B8D6))
 
