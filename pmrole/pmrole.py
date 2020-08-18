@@ -76,7 +76,7 @@ class PMRole(commands.Cog):
     async def am_role_set(self, ctx, *, role: discord.Role):
         """Sets the am role"""
         await self.db.find_one_and_update(
-            {'_id': 'config'},
+            {'_id': 'config2'},
             {'$set': {'roles': {'am': str(role.id)}}},
             upsert=True
         )
