@@ -54,7 +54,7 @@ class StaffRoles(commands.Cog):
         try:
             roles = ((await self.db.find_one({'_id': 'config'})) or {})['staff','helper']
             try:
-                await ctx.guild.get_member(ctx.thread.recipient.id).add_roles(ctx.guild.get_role(int(roles['staff','helper])), reason="Role added by "+ctx.author.display_name+"")
+                await ctx.guild.get_member(ctx.thread.recipient.id).add_roles(ctx.guild.get_role(int(roles['staff','helper])), reason="Role added")
                 
                 await ctx.send(embed=discord.Embed(description="Added <@&"+roles['staff','helper']+"> to "+ctx.thread.recipient.mention, color=0xD0B8D6))
             except discord.Forbidden:
