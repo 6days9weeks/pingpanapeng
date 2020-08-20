@@ -16,7 +16,7 @@ class StaffRoles(commands.Cog):
             await ctx.send(embed=discord.Embed(description="The staff role is <@&"+roles['staff']+">", color=0xD0B8D6))
         except KeyError:
             await ctx.send(embed=discord.Embed(description="There isn't a staff role set\nAdmins can set it with `staff_role set [role]`", color=0xD0B8D6))
-            @staff_role.command(name="set")
+     @staff_role.command(name="set")
      @checks.has_permissions(PermissionLevel.ADMIN)
      async def staff_role_set(self, ctx, *, role: discord.Role):
         """Sets the staff role"""
