@@ -32,7 +32,7 @@ class StaffRoles(commands.Cog):
     async def helper_role(self, ctx):
         """Checks the helper role"""
         try:
-            roles = ((await self.db.find_one({'_id': 'config'})) or {})['amrole']
+            roles = ((await self.db.find_one({'_id': 'config'})) or {})['helper']
             await ctx.send(embed=discord.Embed(description="The helper role is <@&"+roles['helper']+">", color=0xD0B8D6))
         except KeyError:
             await ctx.send(embed=discord.Embed(description="There isn't a helper role set\nAdmins can set it with `helper_role set [role]`", color=0xD0B8D6))
