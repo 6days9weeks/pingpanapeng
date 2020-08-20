@@ -10,17 +10,17 @@ class StaffRoles(commands.Cog):
         self.bot = bot
         self.db = bot.plugin_db.get_partition(self)
      
-     @commands.group(aliases=["staffrole"], invoke_without_command=True)
-     async def staff_role(self, ctx):
+    @commands.group(aliases=["staffrole"], invoke_without_command=True)
+    async def staff_role(self, ctx):
         """Checks the staff role"""
         try:
             roles = ((await self.db.find_one({'_id': 'config'})) or {})['roles']
             await ctx.send(embed=discord.Embed(description="The staff role is <@&"+roles['staff']+">", color=0xD0B8D6))
         except KeyError:
             await ctx.send(embed=discord.Embed(description="There isn't a staff role set\nAdmins can set it with `staff_role set [role]`", color=0xD0B8D6))
-     @staff_role.command(name="set")
-     @checks.has_permissions(PermissionLevel.ADMIN)
-     async def staff_role_set(self, ctx, *, role: discord.Role):
+    @staff_role.command(name="set")
+    @checks.has_permissions(PermissionLevel.ADMIN)
+    async def staff_role_set(self, ctx, *, role: discord.Role):
         """Sets the staff role"""
         await self.db.find_one_and_update(
             {'_id': 'config'},
@@ -28,17 +28,17 @@ class StaffRoles(commands.Cog):
             upsert=True
         )
         await ctx.send(embed=discord.Embed(description="The staff role is now "+role.mention, color=0xD0B8D6))
-     @commands.group(aliases=["helperrole"], invoke_without_command=True)
-     async def helper_role(self, ctx):
+    @commands.group(aliases=["helperrole"], invoke_without_command=True)
+    async def helper_role(self, ctx):
         """Checks the helper role"""
         try:
             roles = ((await self.db.find_one({'_id': 'config'})) or {})['amrole']
             await ctx.send(embed=discord.Embed(description="The helper role is <@&"+roles['helper']+">", color=0xD0B8D6))
         except KeyError:
             await ctx.send(embed=discord.Embed(description="There isn't a helper role set\nAdmins can set it with `helper_role set [role]`", color=0xD0B8D6))
-     @helper_role.command(name="set")
-     @checks.has_permissions(PermissionLevel.ADMIN)
-     async def helper_role_set(self, ctx, *, role: discord.Role):
+    @helper_role.command(name="set")
+    @checks.has_permissions(PermissionLevel.ADMIN)
+    async def helper_role_set(self, ctx, *, role: discord.Role):
         """Sets the helper role"""
         await self.db.find_one_and_update(
             {'_id': 'config'},
@@ -46,10 +46,10 @@ class StaffRoles(commands.Cog):
             upsert=True
         )
         await ctx.send(embed=discord.Embed(description="The helper role is now "+role.mention, color=0xD0B8D6))
-     @commands.command(aliases=["accept", "shelp"])
-     @checks.has_permissions(PermissionLevel.SUPPORTER)
-     @checks.thread_only()
-async def add_staffs(self, ctx):
+    @commands.command(aliases=["accept", "shelp"])
+    @checks.has_permissions(PermissionLevel.SUPPORTER)
+    @checks.thread_only()
+    async def add_staffs(self, ctx):
         """Adds the staff role to the thread recipient"""
         try:
             roles = ((await self.db.find_one({'_id': 'config'})) or {})['staff','helper']
