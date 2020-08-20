@@ -3,11 +3,13 @@ from discord.ext import commands
 
 from core import checks
 from core.models import PermissionLevel
+
 class StaffRoles(commands.Cog):
     """Provides commands for giving/taking away staff roles in a thread"""
     def __init__(self, bot):
         self.bot = bot
         self.db = bot.plugin_db.get_partition(self)
+     
      @commands.group(aliases=["staffrole"], invoke_without_command=True)
      async def staff_role(self, ctx):
         """Checks the staff role"""
