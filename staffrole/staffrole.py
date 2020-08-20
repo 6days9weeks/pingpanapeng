@@ -9,7 +9,7 @@ class StaffRoles(commands.Cog):
         self.bot = bot
         self.db = bot.plugin_db.get_partition(self)
 @commands.group(aliases=["staffrole"], invoke_without_command=True)
-    async def staff_role(self, ctx):
+async def staff_role(self, ctx):
         """Checks the staff role"""
         try:
             roles = ((await self.db.find_one({'_id': 'config'})) or {})['roles']
