@@ -34,7 +34,7 @@ async def staff_role(self, ctx):
             await ctx.send(embed=discord.Embed(description="The helper role is <@&"+roles['helper']+">", color=0xD0B8D6))
         except KeyError:
             await ctx.send(embed=discord.Embed(description="There isn't a helper role set\nAdmins can set it with `helper_role set [role]`", color=0xD0B8D6))
-    @am_role.command(name="set")
+    @helper_role.command(name="set")
     @checks.has_permissions(PermissionLevel.ADMIN)
     async def helper_role_set(self, ctx, *, role: discord.Role):
         """Sets the helper role"""
