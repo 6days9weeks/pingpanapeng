@@ -52,7 +52,7 @@ class StaffRoles(commands.Cog):
     async def add_staffs(self, ctx):
         """Adds the staff role to the thread recipient"""
         try:
-            roles = ((await self.db.find_one({'_id': 'config'})) or {})['staff','helper']
+            roles = ((await self.db.find_one({'_id': 'config'})) or {})['staffrole','helperrole']
             try:
                 await ctx.guild.get_member(ctx.thread.recipient.id).add_roles(ctx.guild.get_role(int(roles['staff','helper'])), reason="Role Added By Echidna")
                 await ctx.send(embed=discord.Embed(description="Added <@&"+roles['staff','helper']+"> to "+ctx.thread.recipient.mention, color=0xD0B8D6))
