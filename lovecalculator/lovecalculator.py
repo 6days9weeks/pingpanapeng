@@ -12,7 +12,7 @@ class LoveCalculator(commands.Cog):
 
     @commands.command(aliases=["lovecalc"])
     async def lovecalculator(
-            self, ctx: commands.Context, lover: discord.Member, loved: discord.Member
+            self, ctx: commands.Context, lover: discord.Message, loved: discord.Message
     ):
         """Calculate the love percentage!"""
 
