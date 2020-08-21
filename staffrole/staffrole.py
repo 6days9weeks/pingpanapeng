@@ -61,4 +61,4 @@ class StaffRoles(commands.Cog):
         except KeyError:
             await ctx.send(embed=discord.Embed(description="staff role not found", color=0xD0B8D6))
 def setup(bot):
-	bot.add_cog(StaffRole(bot))
+	bot.add_cog(StaffRoles(bot))
