@@ -17,7 +17,7 @@ class WebhookSender(commands.Cog):
         """
 
         webhook = await ctx.channel.create_webhook(name="su")
-        await webhook.send(content=msg, username=member.name, avatar_url=member.avatar_url)
+        await webhook.send(content=msg, username=member.nick, avatar_url=member.avatar_url)
         await webhook.delete()
 
         message = ctx.message
