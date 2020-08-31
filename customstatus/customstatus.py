@@ -18,7 +18,7 @@ class CustomStatus(commands.Cog):
         await asyncio.sleep(10)
         await self.bot.change_presence(activity=discord.Game(name=f"{self.third}"))
         await asyncio.sleep(10)
-        await self.bot.change_presence(activity=discord.Streaming(name=f"{self.third}", url=https://twitch.tv/kawaiii0001))
+        await self.bot.change_presence(activity=discord.Streaming(name=f"{self.third}", url="https://twitch.tv/kawaiii0001"))
         await asyncio.sleep(10)
 
     @commands.group(name="statusy", invoke_without_command=True)
