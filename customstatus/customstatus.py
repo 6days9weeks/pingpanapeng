@@ -64,7 +64,7 @@ class CustomStatus(commands.Cog):
 
     @status_group.command(name="four")
     async def fourth_set(self, ctx, *, four):
-        if three == None:
+        if four == None:
             await ctx.send("Please choose something to set!")
         else:
             self.fourth = four
