@@ -60,7 +60,7 @@ class CustomStatus(commands.Cog):
             await ctx.send("Please choose something to set!")
         else:
             self.third = three
-            await ctx.send(f"Set `{three}` as the first status!")
+            await ctx.send(f"Set `{three}` as the third status!")
 
     @status_group.command(name="four")
     async def fourth_set(self, ctx, *, four):
@@ -68,7 +68,7 @@ class CustomStatus(commands.Cog):
             await ctx.send("Please choose something to set!")
         else:
             self.fourth = four
-            await ctx.send(f"Set `{four}` as the first status!")
+            await ctx.send(f"Set `{four}` as the fourth status!")
 
 
 def setup(bot):
