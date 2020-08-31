@@ -9,8 +9,8 @@ class Verify(commands.Cog):
         self.bot = bot
         self.maincolor = 0x06c9ff
         self.errorcolor = 0xFF0000
-        self.log_channel = 708197652545667072  # ID of the log channel
-        self.defaultRole = 705764532303167568  # ID of the Discord Member role
+        self.log_channel = 750103215726395523  # ID of the log channel
+        self.defaultRole = 698516093182148608  # ID of the Discord Member role
        
 
     @commands.command(name="send-verify")
@@ -18,7 +18,7 @@ class Verify(commands.Cog):
     async def sendverifymsg(self, ctx):
         embed = discord.Embed(
             title="**Verification**",
-            description="To gain access to Chiasa Discord Server, you will have to verify.\n\nVerifying means that you have agreed to our Rules and Guidelines\n\nOur Rules and Guidelines can be found in <#711667049465905302> and for info on our server check <#711667131820933210>!\n\nTo verify, please type `verify` in this channel!",
+            description="To gain access to Shiro Discord Server, you will have to verify.\n\nVerifying means that you have agreed to our Rules and Guidelines\n\nOur Rules and Guidelines can be found in <#714310669943439401> and for info on our server check <#738214415576596541>!\n\nTo verify, please type `no game no life` in this channel!",
             color=self.maincolor
         )
         await ctx.send(embed=embed)
@@ -29,8 +29,8 @@ class Verify(commands.Cog):
             return
 
         else:
-            if message.channel.id == 705764310109913138:
-                if message.content.lower() == "verify":
+            if message.channel.id == 698516093182148608:
+                if message.content.lower() == "no game no life":
                     guild = message.guild
                     role = guild.get_role(self.defaultRole)
                    
@@ -49,7 +49,7 @@ class Verify(commands.Cog):
                     try:
                         embed = discord.Embed(
                             title="Verification",
-                            description="You are now verified in Chiasa Discord Server! Get some roles from <#711673102534181005>",
+                            description="You are now verified in Shiro Discord Server! Get some roles from <#738317182668242984>",
                             color=self.maincolor
                         )
                         await message.author.send(embed=embed)
