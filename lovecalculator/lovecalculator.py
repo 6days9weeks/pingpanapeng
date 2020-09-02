@@ -47,6 +47,6 @@ class LoveCalculator(commands.Cog):
             title = "Dr. Love has left a note for you."
 
         description = emoji + " " + description + " " + emoji
-        em = discord.Embed(title=title, description=description, color=discord.Color.red())
+        em = discord.Embed(title=title, description=description, color=discord.Color.blurple())
 def setup(bot):
     bot.add_cog(LoveCalculator(bot))
