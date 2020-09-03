@@ -19,7 +19,7 @@ class idk(commands.Cog):
     async def helpie(self, ctx):
         """Explaination of commands"""
         embed = discord.Embed(
-            title="How To Use Nezubabey- Brief Explanation"
+            title="How To Use Me- Brief Explanation"
         )
         embed.description = """
                 **The commands are explained as followed -**
