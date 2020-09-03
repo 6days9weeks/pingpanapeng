@@ -23,7 +23,7 @@ class idk(commands.Cog):
         )
         embed.description = """
                 **The commands are explained as followed -**
-**To reply normally:** `!reply/!r` or <@!751098362580959232> r,
+**To reply normally:** `!reply`,`!r` or <@!751098362580959232> r,
 **To reply anonymously:** `!ar` or <@!751098362580959232> ar,
 **To close a thread:** to close without any name or who did it just type `!close silently ~~reason~~` to close after sometime do `!close in 5m etc` ,
 **To block a certain person from dming the bot:** `!block userid or usermention`,
@@ -33,7 +33,8 @@ class idk(commands.Cog):
 **To delete a message:** `!delete messageid`,
 **To open a thread with a person without them dming the bot:** `!contact userid or mention`,
 **To get pinged if user replies in thread:** `!sub`,
-**To make an embed:** `!a startadd ` and follow the instructions.
+**To make an embed:** `!a start` and follow the instructions.,
+**To see the other available commands:** `!help`.
             """
         embed.color = self.bot.main_color
         return await ctx.send(embed=embed)
