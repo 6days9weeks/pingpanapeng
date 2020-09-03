@@ -15,7 +15,7 @@ class idk(commands.Cog):
         self.bot = bot
 
     @commands.command(aliases=["howto"])
-    @checks.has_permissions(PermissionLevel.REGULAR)
+    @checks.has_permissions(PermissionLevel.SUPPORTER)
     async def helpie(self, ctx):
         """Explaination of commands"""
         embed = discord.Embed(
@@ -23,18 +23,17 @@ class idk(commands.Cog):
         )
         embed.description = """
                 **The commands are explained as followed -**
-**To reply normally:** `nezur` or <@742315489765621763> r,
-**To reply anonymously:** `nezuar` or <@742315489765621763> ar,
-**To close a thread:** to close without any name or who did it just type `nezuclose silenty ~~reason~~` to close after sometime do `nezuclose in 5m etc` ,
-**To block a certain person from dming the bot:** `nezublock userid or usermention`,
-**To get the loglink of this thread:** `nezuloglink`,
-**To check logs of user:** `nezulogs user`,
-**To make the bot say something:** `nezusay` only for owner,
-**To delete a message:** `nezudelete messageid`,
-**To open a thread with a person without them dming the bot:** `nezucontact userid or mention`,
-**To get pinged if user replies in thread:** `nezusubscribe`,
-**To add an tag:** `nezutags add "tag name" value`,
-Any questions? Just Dm me or ping me in chat my tag is `chizuru#0001` <@682849186227552266>
+**To reply normally:** `!reply/!r` or <@!751098362580959232> r,
+**To reply anonymously:** `!ar` or <@!751098362580959232> ar,
+**To close a thread:** to close without any name or who did it just type `!close silently ~~reason~~` to close after sometime do `!close in 5m etc` ,
+**To block a certain person from dming the bot:** `!block userid or usermention`,
+**To get the loglink of this thread:** `!loglink`,
+**To check logs of user:** `!logs user`,
+**To make the bot say something:** `!say` only for owner,
+**To delete a message:** `!delete messageid`,
+**To open a thread with a person without them dming the bot:** `!contact userid or mention`,
+**To get pinged if user replies in thread:** `!sub`,
+**To make an embed:** `!a startadd ` and follow the instructions.
             """
         embed.color = self.bot.main_color
         return await ctx.send(embed=embed)
