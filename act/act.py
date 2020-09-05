@@ -2,7 +2,7 @@ from redbot.core import commands, checks
 import discord
 
 
-class Webhooks(commands.Cog):
+class Act(commands.Cog):
     """Description of the cog visible with [p]help Webhooks"""
 
     @commands.command()
