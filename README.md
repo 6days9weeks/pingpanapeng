@@ -1,1 +1,1 @@
-My plugins for the modmail bot by kyb3r. Some plugins are modified versions of publicly available plugins like moderation and some are for my server. There is also some public plugins you can install.
+Random Cogs For Various Bots And Idk Anymore
