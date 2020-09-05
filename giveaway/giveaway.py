@@ -201,7 +201,7 @@ class GiveawayPlugin(commands.Cog):
         def cancel_check(msg: discord.Message):
             return msg.content == "cancel" or msg.content == f"{ctx.prefix}cancel"
 
-        embed = discord.Embed(colour=0x00FF00)
+        embed = discord.Embed(colour=0xFFCFF2)
 
         await ctx.send(embed=self.generate_embed("What is the giveaway item?"))
         giveaway_item = await self.bot.wait_for("message", check=check)
