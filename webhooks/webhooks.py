@@ -2,8 +2,8 @@ from redbot.core import commands, checks
 import discord
 
 
-class MyFirstCog(commands.Cog):
-    """Description of the cog visible with [p]help MyFirstCog"""
+class Webhooks(commands.Cog):
+    """Description of the cog visible with [p]help Webhooks"""
 
     @commands.command()
     @checks.admin_or_permissions(manage_guild=True)
