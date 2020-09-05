@@ -43,6 +43,7 @@ class Verify(commands.Cog):
                         description=f"{message.author.mention} just verified!\n\nTheir ID is {message.author.id}\n\nAccount created at **{message.author.created_at}**.",
                         color=self.maincolor
                     )
+                    embed.set_thumbnail(url=message.author.avatar_url)
                     await log_channel.send(embed=embed)
                     await asyncio.sleep(2)
                     await message.delete()
@@ -52,6 +53,7 @@ class Verify(commands.Cog):
                             description="You are now verified in Chiasa Discord Server! Get some roles from <#711673102534181005>",
                             color=self.maincolor
                         )
+                        embed.set_thumbnail(url=message.author.avatar_url)
                         await message.author.send(embed=embed)
                     except:
                         print(f"Couldn't send {message.author.name} his verification acceptation")
