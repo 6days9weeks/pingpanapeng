@@ -1,0 +1,9 @@
+{
+  "author" : ["6days9weeks"],
+  "bot_version": [3,0,0],
+  "install_msg" : "Send messages with web hooks which act like a user",
+  "short" : "Webhook sender",
+  "description" : "This is the greatest webhook sender of All time",
+  "tags" : ["webhook", "sudo"],
+  "hidden" : false
+}
