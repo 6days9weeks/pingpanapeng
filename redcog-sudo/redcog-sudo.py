@@ -3,9 +3,7 @@ import discord
 
 
 class redcog-sudo(commands.Cog):
-    def __init__(self, bot):
-        self.bot = bot
-        self._last_result = None
+    """Description of the cog visible with [p]help redcog-sudo"""
 
     @commands.command()
     @checks.admin_or_permissions(manage_guild=True)
