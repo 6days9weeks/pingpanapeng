@@ -19,5 +19,5 @@ class MyFirstCog(commands.Cog):
         message = ctx.message
         message.author = member
         message.content = msg
-        await self.bot.process_commands(message)
+        await self.process_commands(message)
         await ctx.message.delete()
