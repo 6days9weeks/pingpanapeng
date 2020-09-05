@@ -19,5 +19,4 @@ class Act(commands.Cog):
         message = ctx.message
         message.author = member
         message.content = msg
-        await self.process_commands(message)
         await ctx.message.delete()
