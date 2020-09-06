@@ -14,14 +14,15 @@ class Jp(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
-   
-    @commands.command(aliases=["memberinfo", "user", "userinfo"])
-    @checks.has_permissions(PermissionLevel.REGULAR)
-    async def member(self, ctx, *, member: typing.Union[discord.Member, str] = None):
-        """Get the stats of a member."""
 
-        embed = MemberResource(ctx, member).member_embed()
+    @checks.has_permissions(PermissionLevel.REGULAR)
+    async def joinposition(self, ctx, *, member: typing.Union[discord.Member, str] = None):
+        """Get the join position of a member."""
+
+        embed = JoinResource(ctx, member).join_embed()
         await ctx.send(embed=embed)
+
+
 
 def setup(bot):
     bot.add_cog(Jp(bot))
