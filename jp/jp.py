@@ -15,6 +15,7 @@ class Jp(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    @commands.command(aliases=["joinp"])
     @checks.has_permissions(PermissionLevel.REGULAR)
     async def joinposition(self, ctx, *, member: typing.Union[discord.Member, str] = None):
         """Get the join position of a member."""
