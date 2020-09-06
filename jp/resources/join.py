@@ -43,7 +43,7 @@ class JoinResource:
 
         m: discord.Member = self.member
 
-        join_position = sorted(m.guild.members, key=lambda m: m.joined_at).index(m) + 1
+        join_position = sorted(message.guild.members, key=lambda m: m.joined_at).index(m) + 1
 
         embed = discord.Embed(color=m.color)
 
