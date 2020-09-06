@@ -3,7 +3,7 @@ import discord
 from .timedelta import format_time
 
 
-class MemberResource:
+class JoinResource:
     def __init__(self, ctx, member):
         self.ctx = ctx
         self.member = member
@@ -38,7 +38,7 @@ class MemberResource:
 
         self.member = None
 
-    def member_embed(self):
+    def join_embed(self):
         """Create an embed containing the member's information."""
         join_position = sorted(m.guild.members, key=lambda m: m.joined_at).index(m) + 1
 
