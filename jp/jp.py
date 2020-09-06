@@ -10,7 +10,7 @@ from core.paginator import EmbedPaginatorSession
 from .resources.bot import JoinResource
 
 
-    class Jp(commands.Cog):
+class Jp(commands.Cog):
     """Get join position of a member in your server"""
 
     def __init__(self, bot):
