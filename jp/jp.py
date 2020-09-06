@@ -7,7 +7,7 @@ from core import checks
 from core.models import PermissionLevel
 from core.paginator import EmbedPaginatorSession
 
-from .resources.bot import JoinResource
+from .resources.join import JoinResource
 
 class Jp(commands.Cog):
     """Get join position of a member in your server"""
