@@ -40,6 +40,9 @@ class JoinResource:
 
     def join_embed(self):
         """Create an embed containing the member's information."""
+
+        m: discord.Member = self.member
+
         join_position = sorted(m.guild.members, key=lambda m: m.joined_at).index(m) + 1
 
         embed = discord.Embed(color=m.color)
