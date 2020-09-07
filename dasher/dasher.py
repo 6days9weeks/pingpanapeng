@@ -15,7 +15,6 @@ class Dasher(commands.Cog):
 
         else:
             if message.channel.id == 751768597239562260:
-                if message.content.lower() == "":
                     await message.add_reaction("\U00002705")
                    
 
