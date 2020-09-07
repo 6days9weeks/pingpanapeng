@@ -15,9 +15,8 @@ class Dasher(commands.Cog):
 
         else:
             if message.channel.id == 751768597239562260:
-                    await message.add_reaction("\U00002705","\U0000274C")
-                   
-
+                    await message.add_reaction("\U00002705")
+                    await message.add_reaction("\U0000274C")
 
 def setup(bot):
     bot.add_cog(Dasher(bot))
