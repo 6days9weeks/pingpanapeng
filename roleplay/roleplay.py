@@ -2,8 +2,6 @@ import discord
 from discord.ext import commands
 from random import randint
 import aiohttp
-import logging
-from core.models import PermissionLevel
 
 hugs = [
   "https://img2.gelbooru.com/images/ff/63/ff63a3c4329fda2bf1e9704d4e150fea.gif",
