@@ -10,8 +10,10 @@ class Donate(commands.Cog):
     async def on_message(self, message):
         if message.author.bot:
             return
+
+if message.channel.id == 692765490615156757:
             if "donate" in message.content.lower():
-                await ctx.send(f"test")
+                await message.channel.send(f"....")
 
 def setup(bot):
     bot.add_cog(Donate(bot))
