@@ -278,12 +278,12 @@ class Play(commands.Cog):
     """Some roleplay commands"""
     def __init__(self, bot):
         self.bot = bot
-    @commands.command(aliases = ['hug'])
-    async def hugs(self, ctx, *, user: discord.Member):
+    @commands.command()
+    async def hug(self, ctx, *, user: discord.Member):
         """Hugs a user!"""
 
         author = ctx.message.author
-        images = await self.config.hugs()
+        images = random.choice(hugs)
 
         nekos = await self.fetch_nekos_life(ctx, "hug")
         images.extend(nekos)
@@ -298,12 +298,12 @@ class Play(commands.Cog):
         embed.set_image(url=images[i])
         await ctx.send(embed=embed)
 
-    @commands.command(aliases = ['cuddles'])
+    @commands.command()
     async def cuddle(self, ctx, *, user: discord.Member):
         """Cuddles a user!"""
 
         author = ctx.message.author
-        images = await self.config.cuddle()
+        images = random.choice(cuddle)
 
         nekos = await self.fetch_nekos_life(ctx, "cuddle")
         images.extend(nekos)
@@ -318,12 +318,12 @@ class Play(commands.Cog):
         embed.set_image(url=images[i])
         await ctx.send(embed=embed)
 
-    @commands.command(aliases = ['kisses'])
+    @commands.command()
     async def kiss(self, ctx, *, user: discord.Member):
         """Kiss a user!"""
 
         author = ctx.message.author
-        images = await self.config.kiss()
+        images = random.choice(kiss)
 
         nekos = await self.fetch_nekos_life(ctx, "kiss")
         images.extend(nekos)
@@ -338,12 +338,12 @@ class Play(commands.Cog):
         embed.set_image(url=images[i])
         await ctx.send(embed=embed)
 
-    @commands.command(aliases = ['slaps'])
+    @commands.command()
     async def slap(self, ctx, *, user: discord.Member):
         """Slaps a user!"""
 
         author = ctx.message.author
-        images = await self.config.slap()
+        images = random.choice(slap)
 
         nekos = await self.fetch_nekos_life(ctx, "slap")
         images.extend(nekos)
@@ -358,12 +358,12 @@ class Play(commands.Cog):
         embed.set_image(url=images[i])
         await ctx.send(embed=embed)
 
-    @commands.command(aliases = ['pats'])
+    @commands.command()
     async def pat(self, ctx, *, user: discord.Member):
         """Pats a user!"""
 
         author = ctx.message.author
-        images = await self.config.pat()
+        images = random.choice(pat)
 
         nekos = await self.fetch_nekos_life(ctx, "pat")
         images.extend(nekos)
@@ -378,12 +378,12 @@ class Play(commands.Cog):
         embed.set_image(url=images[i])
         await ctx.send(embed=embed)
 
-    @commands.command(aliases = ['licks'])
+    @commands.command()
     async def lick(self, ctx, *, user: discord.Member):
         """Licks a user!"""
 
         author = ctx.message.author
-        images = await self.config.lick()
+        images = random.choice(lick)
         mn = len(images)
         i = randint(0, mn - 1)
 
@@ -399,7 +399,7 @@ class Play(commands.Cog):
         """Highfives a user!"""
 
         author = ctx.message.author
-        images = await self.config.highfive()
+        images = random.choice(highfive)
         mn = len(images)
         i = randint(0, mn - 1)
 
@@ -410,12 +410,12 @@ class Play(commands.Cog):
         embed.set_image(url=images[i])
         await ctx.send(embed=embed)
 
-    @commands.command(aliases = ['feeds'])
+    @commands.command()
     async def feed(self, ctx, *, user: discord.Member):
         """Feeds a user!"""
 
         author = ctx.message.author
-        images = await self.config.feed()
+        images = random.choice(feed)
 
         nekos = await self.fetch_nekos_life(ctx, "feed")
         images.extend(nekos)
@@ -430,12 +430,12 @@ class Play(commands.Cog):
         embed.set_image(url=images[i])
         await ctx.send(embed=embed)
 
-    @commands.command(aliases = ['tickles'])
+    @commands.command()
     async def tickle(self, ctx, *, user: discord.Member):
         """Tickles a user!"""
 
         author = ctx.message.author
-        images = await self.config.tickle()
+        images = random.choice(tickle)
 
         nekos = await self.fetch_nekos_life(ctx, "tickle")
         images.extend(nekos)
@@ -450,12 +450,12 @@ class Play(commands.Cog):
         embed.set_image(url=images[i])
         await ctx.send(embed=embed)
 
-    @commands.command(aliases = ['annoy'])
+    @commands.command()
     async def poke(self, ctx, *, user: discord.Member):
         """Pokes a user!"""
 
         author = ctx.message.author
-        images = await self.config.poke()
+        images = random.choice(tickle)
 
         nekos = await self.fetch_nekos_life(ctx, "poke")
         images.extend(nekos)
@@ -470,12 +470,12 @@ class Play(commands.Cog):
         embed.set_image(url=images[i])
         await ctx.send(embed=embed)
 
-    @commands.command(aliases = ['smirk'])
+    @commands.command()
     async def smug(self, ctx):
         """Be smug towards someone!"""
 
         author = ctx.message.author
-        images = await self.config.smug()
+        images = random.choice(smug)
 
         smug = await self.fetch_nekos_life(ctx, "smug")
         images.extend(smug)
