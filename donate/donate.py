@@ -14,9 +14,17 @@ class Donate(commands.Cog):
             return
 
         else:
-            if message.channel.id == 692765490615156757:
+           
                 if message.content.lower() == "donate":
-                    await message.channel.send("hiii")
+                   
+   
+                        embed = discord.Embed(
+                        title="Here's the donation link for hope",
+                        description=f"{message.author.mention} donate at PayPal.com",
+                        color=self.maincolor
+                    )
+                    embed.set_thumbnail(url=message.author.avatar_url)
+                    await message.channel.send(embed=embed)
 
 def setup(bot):
     bot.add_cog(Donate(bot))
