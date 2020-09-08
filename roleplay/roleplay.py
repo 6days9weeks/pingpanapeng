@@ -5,11 +5,6 @@ import aiohttp
 import logging
 from core.models import PermissionLevel
 
-
-Cog = getattr(commands, "Cog", object)
-
-logger = logging.getLogger("Modmail")
-
 hugs = [
   "https://img2.gelbooru.com/images/ff/63/ff63a3c4329fda2bf1e9704d4e150fea.gif",
   "https://img2.gelbooru.com/images/2c/e8/2ce81403e0279f1a570711f7472b3abb.gif",
