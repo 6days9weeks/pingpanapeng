@@ -299,7 +299,7 @@ class Roleplay(commands.Cog):
         embed.set_image(url=images[i])
         await ctx.send(embed=embed)
 
-     @commands.command()
+     @commands.command(aliases = ['cuddles'])
      async def cuddle(self, ctx, *, user: discord.Member):
         """Cuddles a user!"""
 
@@ -319,7 +319,7 @@ class Roleplay(commands.Cog):
         embed.set_image(url=images[i])
         await ctx.send(embed=embed)
 
-     @commands.command()
+     @commands.command(aliases = ['kisses'])
      async def kiss(self, ctx, *, user: discord.Member):
         """Kiss a user!"""
 
@@ -339,7 +339,7 @@ class Roleplay(commands.Cog):
         embed.set_image(url=images[i])
         await ctx.send(embed=embed)
 
-     @commands.command()
+     @commands.command(aliases = ['slaps'])
      async def slap(self, ctx, *, user: discord.Member):
         """Slaps a user!"""
 
@@ -359,7 +359,7 @@ class Roleplay(commands.Cog):
         embed.set_image(url=images[i])
         await ctx.send(embed=embed)
 
-     @commands.command()
+     @commands.command(aliases = ['pats'])
      async def pat(self, ctx, *, user: discord.Member):
         """Pats a user!"""
 
@@ -379,7 +379,7 @@ class Roleplay(commands.Cog):
         embed.set_image(url=images[i])
         await ctx.send(embed=embed)
 
-     @commands.command()
+     @commands.command(aliases = ['licks'])
      async def lick(self, ctx, *, user: discord.Member):
         """Licks a user!"""
 
@@ -395,7 +395,7 @@ class Roleplay(commands.Cog):
         embed.set_image(url=images[i])
         await ctx.send(embed=embed)
 
-     @commands.command()
+     @commands.command(aliases = ['high5'])
      async def highfive(self, ctx, *, user: discord.Member):
         """Highfives a user!"""
 
@@ -411,7 +411,7 @@ class Roleplay(commands.Cog):
         embed.set_image(url=images[i])
         await ctx.send(embed=embed)
 
-     @commands.command()
+     @commands.command(aliases = ['feeds'])
      async def feed(self, ctx, *, user: discord.Member):
         """Feeds a user!"""
 
@@ -431,7 +431,7 @@ class Roleplay(commands.Cog):
         embed.set_image(url=images[i])
         await ctx.send(embed=embed)
 
-     @commands.command()
+     @commands.command(aliases = ['tickles'])
      async def tickle(self, ctx, *, user: discord.Member):
         """Tickles a user!"""
 
@@ -451,7 +451,7 @@ class Roleplay(commands.Cog):
         embed.set_image(url=images[i])
         await ctx.send(embed=embed)
 
-     @commands.command()
+     @commands.command(aliases = ['annoy'])
      async def poke(self, ctx, *, user: discord.Member):
         """Pokes a user!"""
 
@@ -471,7 +471,7 @@ class Roleplay(commands.Cog):
         embed.set_image(url=images[i])
         await ctx.send(embed=embed)
 
-     @commands.command()
+     @commands.command(aliases = ['smug'])
      async def smug(self, ctx):
         """Be smug towards someone!"""
 
