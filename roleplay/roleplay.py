@@ -277,9 +277,9 @@ smug = [
 
 class Roleplay(commands.Cog):
     """Some roleplay commands"""
-    def __init__(self, bot):
+    def __init__(self, bot)
 
-     @commands.command()
+     @commands.command(aliases = ['hug'])
      async def hugs(self, ctx, *, user: discord.Member):
         """Hugs a user!"""
 
