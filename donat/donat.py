@@ -21,7 +21,7 @@ class Donate(commands.Cog):
                     embed = discord.Embed(
                     title="Here's the donation link for hope",
                     description=f"{message.author.mention} donate at PayPal.com",
-                    color=self.maincolor
+                    color=0xffc2ff
                     )
                     embed.set_thumbnail(url=message.author.avatar_url)
                     await message.channel.send(embed=embed)
