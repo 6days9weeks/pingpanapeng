@@ -475,7 +475,7 @@ class Play(commands.Cog):
         """Be smug towards someone!"""
 
         author = ctx.message.author
-        images = random.choice(smug)
+        images = await self.config.smug()
 
         smug = await self.fetch_nekos_life(ctx, "smug")
         images.extend(smug)
