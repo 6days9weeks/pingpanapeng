@@ -14,7 +14,7 @@ class Donate(commands.Cog):
             return
 
         else:
-            if message.channel.id == 751768597239562260:
+            if message.channel.id == 692765490615156757:
                 if message.content.lower() == "donate":
                     await message.channel.send("hiii")
 
