@@ -470,7 +470,7 @@ class Play(commands.Cog):
         embed.set_image(url=images[i])
         await ctx.send(embed=embed)
 
-    @commands.command(aliases = ['smirk])
+    @commands.command(aliases = ['smirk'])
     async def smug(self, ctx):
         """Be smug towards someone!"""
 
