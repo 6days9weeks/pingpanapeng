@@ -13,7 +13,7 @@ class Donate(commands.Cog):
 
 if message.channel.id == 692765490615156757:
             if "donate" in message.content.lower():
-                await message.channel.send(f"....")
+                await message.channel.send(f"hiii")
 
 def setup(bot):
     bot.add_cog(Donate(bot))
