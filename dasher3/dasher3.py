@@ -9,7 +9,7 @@ class Dasher3(commands.Cog):
         self.bot = bot
         self.maincolor = 0x06c9ff
         self.errorcolor = 0xFF0000
-        self.defaultRole = 752919582414471349  # ID of the Discord Member role
+        self.Role1 = 752919582414471349  # ID of the Discord Member role
        
 
     @commands.Cog.listener()
@@ -21,7 +21,7 @@ class Dasher3(commands.Cog):
             if message.channel.id == 752919997621338272:
                 if message.content.lower() == "!role ap":
                     guild = message.guild
-                    role = guild.get_role(self.defaultRole)
+                    role = guild.get_role(self.Role1)
                    
                    
                     await message.author.add_roles(role)
