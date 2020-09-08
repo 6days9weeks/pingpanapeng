@@ -18,10 +18,10 @@ class Donate(commands.Cog):
                 if message.content.lower() == "donate":
                    
    
-                        embed = discord.Embed(
-                        title="Here's the donation link for hope",
-                        description=f"{message.author.mention} donate at PayPal.com",
-                        color=self.maincolor
+                    embed = discord.Embed(
+                    title="Here's the donation link for hope",
+                    description=f"{message.author.mention} donate at PayPal.com",
+                    color=self.maincolor
                     )
                     embed.set_thumbnail(url=message.author.avatar_url)
                     await message.channel.send(embed=embed)
