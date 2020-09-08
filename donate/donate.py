@@ -11,7 +11,7 @@ class Donate(commands.Cog):
         if message.author.bot:
             return
             if "donate" in message.content.lower():
-                await message.send(f"test")
+                await ctx.send(f"test")
 
 def setup(bot):
     bot.add_cog(Donate(bot))
