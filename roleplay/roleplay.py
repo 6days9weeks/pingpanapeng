@@ -10,14 +10,7 @@ Cog = getattr(commands, "Cog", object)
 
 logger = logging.getLogger("Modmail")
 
-
-class Roleplay(Cog):
-    """Interact with people!"""
-
-    def __init__(self,bot):
-        super().__init__()
-        self.bot = bot {
-            "hugs": [
+            hugs = [
                 "https://img2.gelbooru.com/images/ff/63/ff63a3c4329fda2bf1e9704d4e150fea.gif",
                 "https://img2.gelbooru.com/images/2c/e8/2ce81403e0279f1a570711f7472b3abb.gif",
                 "https://img2.gelbooru.com/images/e2/05/e205e349535e22c07865913770dcad5f.gif",
@@ -67,8 +60,8 @@ class Roleplay(Cog):
                 "https://cdn.weeb.sh/images/rkx1dJ25z.gif",
                 "https://media.giphy.com/media/KMQoRt68bFei4/giphy.gif",
                 "https://cdn.weeb.sh/images/BkZngAYtb.gif",
-            ],
-            "cuddle": [
+            ]
+            cuddle = [
                 "https://cdn.weeb.sh/images/BkTe8U7v-.gif",
                 "https://cdn.weeb.sh/images/SykzL87D-.gif",
                 "https://cdn.weeb.sh/images/BywGX8caZ.gif",
@@ -95,8 +88,8 @@ class Roleplay(Cog):
                 "https://cdn.weeb.sh/images/BJkABImvb.gif",
                 "https://cdn.weeb.sh/images/HkzArUmvZ.gif",
                 "https://cdn.weeb.sh/images/r1A77CZbz.gif",
-            ],
-            "kiss": [
+            ]
+            kiss = [
                 "https://img2.gelbooru.com/images/72/3d/723d7b46a080e459321cb0a46fa4ff84.gif",
                 "https://img2.gelbooru.com/images/14/15/141537ae7a372f093e7d6996b16c245b.gif",
                 "https://img2.gelbooru.com/images/0d/f6/0df60e366022350bdaf7f49390ac90a9.gif",
@@ -121,8 +114,8 @@ class Roleplay(Cog):
                 "https://cdn.weeb.sh/images/rJ6PWohA-.gif",
                 "https://cdn.weeb.sh/images/rJrCj6_w-.gif",
                 "https://78.media.tumblr.com/7255f36b2c31fac77542e8fe6837b408/tumblr_mokq94dAXR1s05qslo1_500.gif",
-            ],
-            "slap": [
+            ]
+            slap = [
                 "https://cdn.weeb.sh/images/H16aQJFvb.gif",
                 "https://img2.gelbooru.com/images/d2/2c/d22c2eedd00914ce38efb46d797be031.gif",
                 "https://safebooru.org//images/192/fb1c45872a172ab384a22b9d9089b861d366564c.gif",
@@ -167,8 +160,8 @@ class Roleplay(Cog):
                 "https://cdn.weeb.sh/images/rkaqm1twZ.gif",
                 "https://cdn.weeb.sh/images/ryn_Zg5JG.gif",
                 "https://cdn.weeb.sh/images/SJ-CQytvW.gif",
-            ],
-            "pat": [
+            ]
+            pat = [
                 "https://cdn.weeb.sh/images/r180y1Yvb.gif",
                 "https://img2.gelbooru.com/images/56/b9/56b9297e70fd0312aba34e7ed1608b27.gif",
                 "https://img2.gelbooru.com/images/ce/ea/ceea3600c9de0fb5a2452d1e9f2d714b.gif",
@@ -210,8 +203,8 @@ class Roleplay(Cog):
                 "https://cdn.weeb.sh/images/SJudB96_f.gif",
                 "https://cdn.weeb.sh/images/SJudB96_f.gif",
                 "https://cdn.weeb.sh/images/r1lVQgcyG.gif",
-            ],
-            "lick": [
+            ]
+            lick = [
                 "https://media1.tenor.com/images/c4f68fbbec3c96193386e5fcc5429b89/tenor.gif?itemid=13451325",
                 "https://media1.tenor.com/images/ec2ca0bf12d7b1a30fea702b59e5a7fa/tenor.gif?itemid=13417195",
                 "https://cdn.weeb.sh/images/HkEqiExdf.gif",
@@ -223,8 +216,8 @@ class Roleplay(Cog):
                 "https://media1.tenor.com/images/81769ee6622b5396d1489fb4667fd20a/tenor.gif?itemid=14376074",
                 "https://media1.tenor.com/images/feeef4685f9307b76c78a22ba0a69f48/tenor.gif?itemid=8413059",
                 "https://media1.tenor.com/images/efd46743771a78e493e66b5d26cd2af1/tenor.gif?itemid=14002773",
-            ],
-            "highfive": [
+            ]
+            highfive = [
                 "https://media1.tenor.com/images/0ae4995e4eb27e427454526c05b2e3dd/tenor.gif?itemid=12376992",
                 "https://media1.tenor.com/images/7b1f06eac73c36721912edcaacddf666/tenor.gif?itemid=10559431",
                 "https://media1.tenor.com/images/c3263b8196afc25ddc1d53a4224347cd/tenor.gif?itemid=9443275",
@@ -237,8 +230,8 @@ class Roleplay(Cog):
                 "https://media1.tenor.com/images/16267f3a34efb42598bd822effaccd11/tenor.gif?itemid=14137081",
                 "https://media1.tenor.com/images/9730876547cb3939388cf79b8a641da9/tenor.gif?itemid=8073516",
                 "https://media1.tenor.com/images/ce85a2843f52309b85515f56a0a49d06/tenor.gif?itemid=14137077",
-            ],
-            "feed": [
+            ]
+            feed = [
                 "https://media1.tenor.com/images/93c4833dbcfd5be9401afbda220066ee/tenor.gif?itemid=11223742",
                 "https://media1.tenor.com/images/33cfd292d4ef5e2dc533ff73a102c2e6/tenor.gif?itemid=12165913",
                 "https://media1.tenor.com/images/72268391ffde3cd976a456ee2a033f46/tenor.gif?itemid=7589062",
@@ -250,8 +243,8 @@ class Roleplay(Cog):
                 "https://media1.tenor.com/images/6bde17caa5743a22686e5f7b6e3e23b4/tenor.gif?itemid=13726430",
                 "https://media1.tenor.com/images/fd3616d34ade61e1ac5cd0975c25a917/tenor.gif?itemid=13653906",
                 "https://imgur.com/v7jsPrv",
-            ],
-            "tickle": [
+            ]
+            tickle = [
                 "https://img2.gelbooru.com/images/c4/41/c441cf1fce1fe51420796f6bd0e420e1.gif",
                 "https://img2.gelbooru.com/images/00/a8/00a8b5ad3ceb7b063ed8a4a59f7c8bdf.gif",
                 "https://img2.gelbooru.com/images/51/63/516318277e9438626c12d0543eb5808b.gif",
@@ -260,8 +253,8 @@ class Roleplay(Cog):
                 "https://media1.tenor.com/images/02f62186ccb7fa8a2667f3216cfd7e13/tenor.gif?itemid=13269751",
                 "https://media1.tenor.com/images/d38554c6e23b86c81f8d4a3764b38912/tenor.gif?itemid=11379131",
                 "https://media1.tenor.com/images/05a64a05e5501be2b1a5a734998ad2b2/tenor.gif?itemid=11379130",
-            ],
-            "poke": [
+            ]
+            poke = [
                 "https://img2.gelbooru.com/images/07/86/078690a58e0b816e8e00cc58e090b499.gif",
                 "https://img2.gelbooru.com/images/b7/89/b789369db69022afde47a1ed62598ec6.gif",
                 "https://img2.gelbooru.com/images/49/ec/49ecc543b7b0b680ad0c27c29e942a21.gif",
@@ -277,8 +270,8 @@ class Roleplay(Cog):
                 "https://media1.tenor.com/images/01b264dc057eff2d0ee6869e9ed514c1/tenor.gif?itemid=14346763",
                 "https://media1.tenor.com/images/f8a48a25f47d5d12342705c7c87368bb/tenor.gif?itemid=14134415",
                 "https://media.tenor.com/images/6b5c1554a6ee9d48ab0392603bab8a8e/tenor.gif",
-            ],
-            "smug": [
+            ]
+            smug = [
                 "https://cdn.nekos.life/v3/sfw/gif/smug/smug_027.gif",
                 "https://cdn.nekos.life/v3/sfw/gif/smug/smug_057.gif",
                 "https://i.kym-cdn.com/photos/images/original/001/087/562/93c.gif",
@@ -286,9 +279,12 @@ class Roleplay(Cog):
                 "https://media1.tenor.com/images/d9b3127da3f9419cbb28f9f7c00860d8/tenor.gif?itemid=9588226",
                 "https://media1.tenor.com/images/0097fa7f957477f9edc5ff147bb9a5ad/tenor.gif?itemid=12390496",
 
-            ],
-        }
-       
+            ]
+
+class Roleplay(commands.Cog):
+    """Some roleplay commands"""
+    def __init__(self, bot):
+
     @commands.has_permissions()
     async def hugs(self, ctx, *, user: discord.Member):
         """Hugs a user!"""
