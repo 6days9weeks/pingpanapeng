@@ -29,7 +29,7 @@ class Dasher3(commands.Cog):
                     await message.add_reaction("\U00002705")
                    
                     await asyncio.sleep(2)
-                    await ctx.message.delete()
+                    await message.delete()
                     try:
                         embed = discord.Embed(
                             title="Role Given",
