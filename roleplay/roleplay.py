@@ -280,7 +280,6 @@ class Roleplay(commands.Cog):
     def __init__(self, bot):
 
      @commands.command()
-     @commands.has_permissions()
      async def hugs(self, ctx, *, user: discord.Member):
         """Hugs a user!"""
 
@@ -301,7 +300,6 @@ class Roleplay(commands.Cog):
         await ctx.send(embed=embed)
 
      @commands.command()
-     @commands.has_permissions()
      async def cuddle(self, ctx, *, user: discord.Member):
         """Cuddles a user!"""
 
@@ -322,7 +320,6 @@ class Roleplay(commands.Cog):
         await ctx.send(embed=embed)
 
      @commands.command()
-     @commands.has_permissions()
      async def kiss(self, ctx, *, user: discord.Member):
         """Kiss a user!"""
 
@@ -343,7 +340,6 @@ class Roleplay(commands.Cog):
         await ctx.send(embed=embed)
 
      @commands.command()
-     @commands.has_permissions()
      async def slap(self, ctx, *, user: discord.Member):
         """Slaps a user!"""
 
@@ -364,7 +360,6 @@ class Roleplay(commands.Cog):
         await ctx.send(embed=embed)
 
      @commands.command()
-     @commands.has_permissions()
      async def pat(self, ctx, *, user: discord.Member):
         """Pats a user!"""
 
@@ -385,7 +380,6 @@ class Roleplay(commands.Cog):
         await ctx.send(embed=embed)
 
      @commands.command()
-     @commands.has_permissions()
      async def lick(self, ctx, *, user: discord.Member):
         """Licks a user!"""
 
@@ -402,7 +396,6 @@ class Roleplay(commands.Cog):
         await ctx.send(embed=embed)
 
      @commands.command()
-     @commands.has_permissions()
      async def highfive(self, ctx, *, user: discord.Member):
         """Highfives a user!"""
 
@@ -419,7 +412,6 @@ class Roleplay(commands.Cog):
         await ctx.send(embed=embed)
 
      @commands.command()
-     @commands.has_permissions()
      async def feed(self, ctx, *, user: discord.Member):
         """Feeds a user!"""
 
@@ -440,7 +432,6 @@ class Roleplay(commands.Cog):
         await ctx.send(embed=embed)
 
      @commands.command()
-     @commands.has_permissions()
      async def tickle(self, ctx, *, user: discord.Member):
         """Tickles a user!"""
 
@@ -461,7 +452,6 @@ class Roleplay(commands.Cog):
         await ctx.send(embed=embed)
 
      @commands.command()
-     @commands.has_permissions()
      async def poke(self, ctx, *, user: discord.Member):
         """Pokes a user!"""
 
@@ -482,7 +472,6 @@ class Roleplay(commands.Cog):
         await ctx.send(embed=embed)
 
      @commands.command()
-     @commands.has_permissions()
      async def smug(self, ctx):
         """Be smug towards someone!"""
 
