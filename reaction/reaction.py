@@ -274,7 +274,7 @@ smug = [
   "https://media1.tenor.com/images/0097fa7f957477f9edc5ff147bb9a5ad/tenor.gif?itemid=12390496"
 ]
 
-class Roleplay(commands.Cog):
+class Play(commands.Cog):
     """Some roleplay commands"""
     def __init__(self, bot):
         self.bot = bot
@@ -506,5 +506,5 @@ class Roleplay(commands.Cog):
 
       
 def setup(bot):
-    bot.add_cog(Roleplay(bot))
+    bot.add_cog(Play(bot))
 
