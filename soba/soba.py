@@ -46,6 +46,14 @@ class CustomStatus(commands.Cog):
             self.first = first
             await ctx.send(f"Set `{first}` as the first status!")
 
+    @status_group.command(name="two")
+    async def second_set(self, ctx, *, two):
+        if two == None:
+            await ctx.send("Please choose something to set!")
+        else:
+            self.second = two
+            await ctx.send(f"Set `{two}` as the second status!")
+
     @status_group.command(name="three")
     async def third_set(self, ctx, *, three):
         if three == None:
