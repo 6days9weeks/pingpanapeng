@@ -18,6 +18,13 @@ class CustomStatus(commands.Cog):
         await self.bot.change_presence(activity=discord.Streaming(name=f"dm for help", url="https://twitch.tv/kawaiii0001"))
         await asyncio.sleep(10)
 
+    @commands.command(name="start")
+    async def statusy_start(self, ctx):
+       
+            self.start_the_status.start()
+            await ctx.send("Done! If you experience any problems just run this command again!")
+
+
 
 def setup(bot):
     bot.add_cog(CustomStatus(bot))
