@@ -14,7 +14,7 @@ class CustomStatus(commands.Cog):
     async def start_the_status(self):
         await self.bot.change_presence(activity=discord.Game(name=f"{self.first}"))
         await asyncio.sleep(10)
-        await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{bot.guild.member_count}  cuties <3"))
+        await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{self.second}"))
         await asyncio.sleep(10)
         await self.bot.change_presence(activity=discord.Streaming(name=f"{self.third}"))
         await asyncio.sleep(10)
