@@ -11,10 +11,6 @@ class autodeleter(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        if message.author.bot:
-            return
-
-        else:
             if message.channel.id == 757144854265331792:
                
                     await message.delete()
@@ -22,3 +18,4 @@ class autodeleter(commands.Cog):
 
 def setup(bot):
     bot.add_cog(autodeleter(bot))
+
