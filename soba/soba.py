@@ -16,6 +16,7 @@ class StatusNezuko(commands.Cog):
         await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name=f"buy paid promos"))
         await asyncio.sleep(10)
         await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=f"ash is mine ~ itsuki"))
+        await asyncio.sleep(10)
 
     @commands.command(name="status_start")
     async def start_start_cmd(self, ctx):
