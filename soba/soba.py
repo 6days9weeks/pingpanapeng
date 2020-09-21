@@ -1,30 +1,21 @@
 import discord
-from discord.ext import commands, tasks
+from discord.ext import commands,tasks
 import asyncio
 
-class CustomStatus(commands.Cog):
+class StatusNezuko(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-       
 
     @tasks.loop(seconds=10)
-    async def start_the_status(self):
-        await self.bot.change_presence(activity=discord.Game(name=f"type donate to donate"))
-        await asyncio.sleep(10)
-        await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{bot.guild.member_count}  cuties <3"))
-        await asyncio.sleep(10)
-        await self.bot.change_presence(activity=discord.Streaming(name=f"soba struggles in life", url="https://twitch.tv/kawaiii0001"))
-        await asyncio.sleep(10)
-        await self.bot.change_presence(activity=discord.Streaming(name=f"dm for help", url="https://twitch.tv/kawaiii0001"))
+    async def start_status(self):
+        server = self.bot.get_guild(644687385606488125)
+        await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{server.member_count} cuties <3"))
         await asyncio.sleep(10)
 
-    @commands.command()
-    async def start(self, ctx):
-       
-            self.start_the_status.start()
-            await ctx.send("Done! If you experience any problems just run this command again!")
-
-
+    @commands.command(name="status_start")
+    async def start_start_cmd(self, ctx):
+        self.start_status.start()
+        await ctx.send("Done! Re-run this command if it stops working")
 
 def setup(bot):
-    bot.add_cog(CustomStatus(bot))
+    bot.add_cog(StatusNezuko(bot))
