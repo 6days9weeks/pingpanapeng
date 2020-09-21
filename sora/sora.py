@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands,tasks
 import asyncio
 
-class StatusNezuko(commands.Cog):
+class StatusChiasa(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -22,4 +22,4 @@ class StatusNezuko(commands.Cog):
         await ctx.send("Done! Re-run this command if it stops working")
 
 def setup(bot):
-    bot.add_cog(StatusNezuko(bot))
+    bot.add_cog(StatusChiasa(bot))
