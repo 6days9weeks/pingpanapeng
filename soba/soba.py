@@ -8,7 +8,7 @@ class StatusNezuko(commands.Cog):
 
     @tasks.loop(seconds=10)
     async def start_status(self):
-        server = self.bot.get_guild(644687385606488125)
+        server = self.bot.get_guild(703455306272735313)
         await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{server.member_count} cuties <3"))
         await asyncio.sleep(10)
 
