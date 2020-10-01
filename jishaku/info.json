@@ -1,0 +1,9 @@
+{
+    "author": ["6days9weeks"],
+    "requirements": [
+        "jishaku"
+    ],
+    "description": "I really needed jishaku.",
+    "short": "Just adds jishaku to red discord bot.",
+    "install_msg": "Jishku is installed. Load with [p]load jishaku"
+}
