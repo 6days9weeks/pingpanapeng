@@ -125,21 +125,6 @@ class Action(commands.Cog):
         embed.set_footer(text="Made with the help of nekos.life")
         embed.set_image(url=cuddles)
         await ctx.send(embed=embed)   
- 
-    @commands.command()
-    async def spank(self, ctx, *, user: discord.Member):
-        """Spanks a user!"""
-
-        author = ctx.message.author
-        spanks = nekos.img('spank')
-
-        # Build Embed
-        embed = discord.Embed()
-        embed.description = f"**{author.mention} spanks {user.mention}**"
-        embed.set_footer(text="Made with the help of nekos.life")
-        embed.set_image(url=spanks)
-        await ctx.send(embed=embed)       
-        
 
     @commands.command()
     async def poke(self, ctx, *, user: discord.Member):
