@@ -35,7 +35,7 @@ class Action(commands.Cog):
         pats = nekos.img('pat')
 
         # Build Embed
-        embed = discord.Embed()
+        embed = discord.Embed(color=0xffc2ff)
         embed.description = f"**{author.mention} pats {user.mention}**"
         embed.set_footer(text="Made with the help of nekos.life")
         embed.set_image(url=pats)
@@ -49,7 +49,7 @@ class Action(commands.Cog):
         hugs = nekos.img('hug')
 
         # Build Embed
-        embed = discord.Embed()
+        embed = discord.Embed(color=0xffc2ff)
         embed.description = f"**{author.mention} hugs {user.mention}**"
         embed.set_footer(text="Made with the help of nekos.life")
         embed.set_image(url=hugs)
@@ -63,7 +63,7 @@ class Action(commands.Cog):
         slaps = nekos.img('slap')
 
         # Build Embed
-        embed = discord.Embed()
+        embed = discord.Embed(color=0xffc2ff)
         embed.description = f"**{author.mention} slap {user.mention}**"
         embed.set_footer(text="Made with the help of nekos.life")
         embed.set_image(url=slaps)
@@ -77,7 +77,7 @@ class Action(commands.Cog):
         bakas = nekos.img('baka')
 
         # Build Embed
-        embed = discord.Embed()
+        embed = discord.Embed(color=0xffc2ff)
         embed.description = f"**{author.mention} calls {user.mention} baka**"
         embed.set_footer(text="Made with the help of nekos.life")
         embed.set_image(url=bakas)
@@ -92,7 +92,7 @@ class Action(commands.Cog):
         tickles = nekos.img('tickle')
 
         # Build Embed
-        embed = discord.Embed()
+        embed = discord.Embed(color=0xffc2ff)
         embed.description = f"**{author.mention} tickles {user.mention}**"
         embed.set_footer(text="Made with the help of nekos.life")
         embed.set_image(url=tickles)
@@ -106,7 +106,7 @@ class Action(commands.Cog):
         smugs = nekos.img('smug')
 
         # Build Embed
-        embed = discord.Embed()
+        embed = discord.Embed(color=0xffc2ff)
         embed.description = f"**{author.name} smugs at {user.name}**"
         embed.set_footer(text="Made with the help of nekos.life")
         embed.set_image(url=smugs)
@@ -120,7 +120,7 @@ class Action(commands.Cog):
         cuddles = nekos.img('cuddle')
 
         # Build Embed
-        embed = discord.Embed()
+        embed = discord.Embed(color=0xffc2ff)
         embed.description = f"**{author.mention} cuddles {user.mention}**"
         embed.set_footer(text="Made with the help of nekos.life")
         embed.set_image(url=cuddles)
@@ -134,7 +134,7 @@ class Action(commands.Cog):
         pokes = nekos.img('poke')
 
         # Build Embed
-        embed = discord.Embed()
+        embed = discord.Embed(color=0xffc2ff)
         embed.description = f"**{author.mention} pokes {user.mention}**"
         embed.set_footer(text="Made with the help of nekos.life")
         embed.set_image(url=pokes)
@@ -148,7 +148,7 @@ class Action(commands.Cog):
         feeds = nekos.img('feed')
 
         # Build Embed
-        embed = discord.Embed()
+        embed = discord.Embed(color=0xffc2ff)
         embed.description = f"**{author.mention} feeds {user.mention}**"
         embed.set_footer(text="Made with the help of nekos.life")
         embed.set_image(url=feeds)
