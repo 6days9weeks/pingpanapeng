@@ -20,7 +20,7 @@ class Action(commands.Cog):
         kisses = nekos.img('kiss')
 
         # Build Embed
-        embed = discord.Embed()
+        embed = discord.Embed(color=0xffc2ff)
         embed.description = f"**{author.mention} kisses {user.mention}**"
         embed.set_footer(text="Made with the help of nekos.life")
         embed.set_image(url=kisses)
@@ -107,7 +107,7 @@ class Action(commands.Cog):
 
         # Build Embed
         embed = discord.Embed()
-        embed.description = f"**{author.name} smugs**"
+        embed.description = f"**{author.name} smugs at {user.name}**"
         embed.set_footer(text="Made with the help of nekos.life")
         embed.set_image(url=smugs)
         await ctx.send(embed=embed)        
@@ -128,7 +128,7 @@ class Action(commands.Cog):
 
     @commands.command()
     async def poke(self, ctx, *, user: discord.Member):
-        """Kiss a user!"""
+        """Poke a user!"""
 
         author = ctx.message.author
         pokes = nekos.img('poke')
