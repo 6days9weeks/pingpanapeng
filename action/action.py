@@ -46,7 +46,7 @@ class Action(commands.Cog):
         """Hug a user!"""
 
         author = ctx.message.author
-        kisses = nekos.img('hug')
+        hug = nekos.img('hug')
 
         # Build Embed
         embed = discord.Embed()
