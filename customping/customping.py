@@ -1,10 +1,14 @@
-import discord
-import time
+# Remove command logic originally from: https://github.com/mikeshardmind/SinbadCogs/tree/v3/messagebox
+# Speed test logic from https://github.com/PhasecoreX/PCXCogs/tree/master/netspeed
+
 import asyncio
 import concurrent
-import speedtest
+import datetime
+import time
 
-from redbot.core import commands, checks
+import discord
+import speedtest
+from redbot.core import checks, commands
 
 old_ping = None
 
@@ -28,8 +32,8 @@ class CustomPing(commands.Cog):
             self.bot.add_command(old_ping)
 
     @checks.bot_has_permissions(embed_links=True)
-    @commands.cooldown(5, 10, commands.BucketType.user)
-    @commands.command()
+    @commands.cooldown(2, 5, commands.BucketType.user)
+    @commands.group(invoke_without_command=True)
     async def ping(self, ctx):
         """Ping the bot..."""
         start = time.monotonic()
@@ -70,6 +74,50 @@ class CustomPing(commands.Cog):
         e.color = color
         e.title = "Pong!"
         e.description = e.description + f"\n<:host:759076038688505896> Host Latency: {hostPing}ms"
+        await asyncio.sleep(0.25)
+        try:
+            await message.edit(embed=e)
+        except discord.NotFound:
+            return
+
+    @ping.command()
+    async def moreinfo(self, ctx: commands.Context):
+        """Ping with additional latency stastics."""
+        now = datetime.datetime.utcnow().timestamp()
+        receival_ping = round((now - ctx.message.created_at.timestamp()) * 1000, 2)
+
+        e = discord.Embed(
+            title="Pinging..",
+            description=f"Receival Latency: {receival_ping}ms",
+        )
+
+        send_start = time.monotonic()
+        message = await ctx.send(embed=e)
+        send_end = time.monotonic()
+        send_ping = round((send_end - send_start) * 1000, 2)
+        e.description += f"\nSend Latency: {send_ping}ms"
+        await asyncio.sleep(0.25)
+
+        edit_start = time.monotonic()
+        try:
+            await message.edit(embed=e)
+        except discord.NotFound:
+            return
+        edit_end = time.monotonic()
+        edit_ping = round((edit_end - edit_start) * 1000, 2)
+        e.description += f"\nEdit Latency: {edit_ping}ms"
+
+        average_ping = (receival_ping + send_ping + edit_ping) / 3
+        if average_ping >= 1000:
+            color = discord.Colour.red()
+        elif average_ping >= 200:
+            color = discord.Colour.orange()
+        else:
+            color = discord.Colour.green()
+
+        e.color = color
+        e.title = "Pong!"
+
         await asyncio.sleep(0.25)
         try:
             await message.edit(embed=e)
