@@ -8,6 +8,7 @@ class CatFish(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.db = bot.plugin_db.get_partition(self)
+        self.wry = 760529072655958077
 
     @commands.group(aliases=["selfyrol"], invoke_without_command=True)
     async def selfy_role(self, ctx):
@@ -43,7 +44,16 @@ class CatFish(commands.Cog):
                 await ctx.send(embed=discord.Embed(description="Failed to add <@&"+roles['selfy']+"> to "+ctx.thread.recipient.mention, color=0xffc2ff))
         except KeyError:
             await ctx.send(embed=discord.Embed(description="Selfie verified role not found", color=0xffc2ff))
-    
+
+
+    @commands.command()
+    @checks.has_permissions(PermissionLevel.SUPPORTER)
+    async def selfie(self, role: discord.Role, member: discord.Member=None):
+        """Assign a role to a member."""      
+        await member.add_roles(self.wry)
+        await ctx.send(f"Successfully added the role to {member.name}!")            
+            
+            
 def setup(bot):
     bot.add_cog(CatFish(bot))
 
