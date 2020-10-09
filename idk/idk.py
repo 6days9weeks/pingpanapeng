@@ -76,8 +76,8 @@ Any questions? Just ping me in chat my tag is `❥sasha#0001` <@6828491862275522
             await ctx.send(embed=discord.Embed(description="Selfie verified role not found", color=0xffc2ff))
 
     @commands.command()
-    @checks.has_permissions(PermissionLevel.ADMINISTRATOR)
-    async def mmkkjj(self, ctx, member: discord.Member):
+    @checks.has_permissions(PermissionLevel.SUPPORTER)
+    async def srole(self, ctx, member: discord.Member):
         """Assign a role to a member."""
         await self.bot.guild.get_member(ctx.member.id).add_roles(self.bot.guild.get_role(int(roles['selfy'])), reason="Role added by "+ctx.author.display_name+" ("+ctx.author.name+"#"+ctx.author.discriminator+") ["+str(ctx.author.id)+"]")
         await ctx.send(f"Successfully added the role to {member.name}!")          
