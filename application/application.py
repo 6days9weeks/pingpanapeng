@@ -121,7 +121,7 @@ class Application(commands.Cog):
             about = await self.bot.wait_for("message", timeout=120, check=check)
         except asyncio.TimeoutError:
             return await ctx.send("You took too long. Try again, please.")
-        await ctx.author.send("What do you like the most about C H I A S A?")    
+        await ctx.author.send("What do you like the most about our server?")    
         try:
             like = await self.bot.wait_for("message", timeout=120, check=check)
         except asyncio.TimeoutError:
@@ -160,10 +160,10 @@ class Application(commands.Cog):
             name="Previous experience:", value=experience.content, inline=False
         )
         embed.add_field(name="About:", value=about.content, inline=False)
-        embed.add_field(name="Like About Server:", value=like.content, inline=False)
-        embed.add_field(name="Help Server:", value=helpz.content, inline=False)
+        embed.add_field(name="Like About The Server:", value=like.content, inline=False)
+        embed.add_field(name="Help The Server:", value=helpz.content, inline=False)
         embed.add_field(name="Additional Skill:", value=skills.content, inline=False)
-        embed.add_field(name="TOS:", value=tos.content, inline=False)
+        embed.add_field(name="Rules & TOS:", value=tos.content, inline=False)
 
         await channel.send(embed=embed)
 
