@@ -23,7 +23,7 @@ class StatusChiasa(commands.Cog):
         await asyncio.sleep(10)
 
     @commands.command(name="ss")
-    @checks.has_permissions(PermissionLevel.OWNER)
+    @checks.has_permissions(PermissionLevel.ADMINISTRATOR)
     async def start_start_cmd(self, ctx):
         self.start_status.start()
         await ctx.message.add_reaction("<a:tickn:739397501693591563>")
