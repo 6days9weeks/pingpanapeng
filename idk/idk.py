@@ -79,7 +79,7 @@ Any questions? Just ping me in chat my tag is `❥sasha#0001` <@6828491862275522
     @checks.has_permissions(PermissionLevel.SUPPORTER)
     async def srole(self, ctx, member: discord.Member):
         """Assign a role to a member."""
-        await self.bot.guild.get_member(ctx.member.id).add_roles(self.bot.guild.get_role(int(roles['selfy'])), reason="Role added by "+ctx.author.display_name+" ("+ctx.author.name+"#"+ctx.author.discriminator+") ["+str(ctx.author.id)+"]")
+        await self.bot.guild.get_member(member.mention.id).add_roles(self.bot.guild.get_role(int(roles['selfy'])), reason="Role added by "+ctx.author.display_name+" ("+ctx.author.name+"#"+ctx.author.discriminator+") ["+str(ctx.author.id)+"]")
         await ctx.send(f"Successfully added the role to {member.name}!")          
             
 def setup(bot):
