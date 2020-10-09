@@ -50,7 +50,7 @@ class CatFish(commands.Cog):
     @checks.has_permissions(PermissionLevel.SUPPORTER)
     async def selfie(self, ctx, member: discord.Member=None):
         """Assign a role to a member."""      
-        await member.add_roles(self.bot.guild.get_role(760529072655958077)), reason="Added by "+ctx.author.display_name+" ("+ctx.author.name+"#"+ctx.author.discriminator+")")
+        await member.add_roles(self.bot.guild.get_role(760529072655958077)), reason="woooo verified"
         await ctx.send(f"Successfully added the role to {member.name}!")            
             
             
