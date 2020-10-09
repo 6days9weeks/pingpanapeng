@@ -16,12 +16,12 @@ class CatFish(commands.Cog):
     @checks.thread_only()
     async def sverify(self, ctx):
         """Adds the verified selfie role to the thread recipient"""
-            try:
-                await ctx.guild.get_member(ctx.thread.recipient.id).add_roles(ctx.guild.get_role(self.verified), reason="Role added by "+ctx.author.display_name+" ("+ctx.author.name+"#"+ctx.author.discriminator+") ["+str(ctx.author.id)+"]")
-                await ctx.send(embed=discord.Embed(description="Added <@&"+(self.verified)+"> to "+ctx.thread.recipient.mention, color=0xffcff2))
-            except discord.Forbidden:
-                await ctx.send(embed=discord.Embed(description="Failed to add <@&"+(self.verified)+"> to "+ctx.thread.recipient.mention, color=0xffcff2))
-        except KeyError:
+        try:
+            await ctx.guild.get_member(ctx.thread.recipient.id).add_roles(ctx.guild.get_role(self.verified)), reason="Role added by "+ctx.author.display_name+" ("+ctx.author.name+"#"+ctx.author.discriminator+") ["+str(ctx.author.id)+"]")
+            await ctx.send(embed=discord.Embed(description="Added <@&"+(self.verified)+"> to "+ctx.thread.recipient.mention, color=0xffcff2))
+        except discord.Forbidden:
+            await ctx.send(embed=discord.Embed(description="Failed to add <@&"+(self.verified)+"> to "+ctx.thread.recipient.mention, color=0xffcff2))
+    except KeyError:
             await ctx.send(embed=discord.Embed(description="Failed to add role", color=0xffcff2))
     
 
