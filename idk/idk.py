@@ -34,7 +34,8 @@ class idk(commands.Cog):
 **To open a thread with a person without them dming the bot:** `nezucontact userid or mention`,
 **To get pinged if user replies in thread:** `nezusubscribe`,
 **To add an tag:** `nezutags add "tag name" value`,
-Any questions? Just Dm me or ping me in chat my tag is `chizuru#0001` <@682849186227552266>
+**To selfie verify a member:** `nezusverify` in the modmail channel.
+Any questions? Just ping me in chat my tag is `❥sasha#0001` <@682849186227552266>
             """
         embed.color = self.bot.main_color
         return await ctx.send(embed=embed)
