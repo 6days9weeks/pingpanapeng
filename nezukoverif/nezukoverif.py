@@ -45,13 +45,21 @@ class CatFish(commands.Cog):
         except KeyError:
             await ctx.send(embed=discord.Embed(description="Selfie verified role not found", color=0xffc2ff))
 
-
     @commands.command()
-    @checks.has_permissions(PermissionLevel.SUPPORTER)
-    async def selfie(self, ctx, member: discord.Member=None):
-        """Assign a role to a member."""      
-        await member.add_roles(self.bot.guild.get_role(760529072655958077)), reason="woooo verified"
-        await ctx.send(f"Successfully added the role to {member.name}!")            
+    @checks.has_permissions(PermissionLevel.ADMINISTRATOR)
+    async def mmkkjj(self, ctx, role: discord.Role, member: discord.Member=None):
+        """Assign a role to a member."""
+        if member is None:
+            try:
+                member = ctx.guild.get_member(int(ctx.channel.topic[9:]))
+            except (ValueError, TypeError):
+                raise commands.MissingRequiredArgument(SimpleNamespace(name="role"))
+        
+        if role.position > ctx.author.roles[-1].position:
+            return await ctx.send("You do not have permissions to give this role.")
+        
+        await member.add_roles(role)
+        await ctx.send(f"Successfully added the role to {member.name}!")          
             
             
 def setup(bot):
