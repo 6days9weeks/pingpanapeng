@@ -26,7 +26,7 @@ class StatusChiasa(commands.Cog):
     @checks.has_permissions(PermissionLevel.OWNER)
     async def start_start_cmd(self, ctx):
         self.start_status.start()
-        await ctx.message.add_reaction("<a:tickn:739397501693591563>")
+        await ctx.message.add_reaction("<a:Heartanimated:717651074126708756>")
         embed = discord.Embed(title="Done!", description="Thanks for setting the status <3", color=0xffc2ff)
         await ctx.send(embed=embed, delete_after=5.0)
 
