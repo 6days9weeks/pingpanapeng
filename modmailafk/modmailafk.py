@@ -409,9 +409,9 @@ class Afk(commands.Cog):
         """
         author = ctx.message.author
         mess = await self._away.user(author).MESSAGE()
-                    away_obj = {}
-                    away_obj["mess"] = int(away[0])
-                    self.away[str(ctx.author.id)] = away_obj
+                     away_obj = {}
+                     away_obj["mess"] = int(away[0])
+                     self.away[str(ctx.author.id)] = away_obj
         if mess:
             await self._away.user(author).MESSAGE.set(False)
             msg = "You're now back."
