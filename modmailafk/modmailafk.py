@@ -9,17 +9,8 @@ IMAGE_LINKS = re.compile(r"(http[s]?:\/\/[^\"\']*\.(?:png|jpg|jpeg|gif|png))")
 
 class Afk(commands.Cog):
     """le afk cog"""
-
-    default_global_settings = {"ign_servers": []}
-    default_guild_settings = {"TEXT_ONLY": False}
     default_user_settings = {
         "MESSAGE": False,
-        "IDLE_MESSAGE": False,
-        "DND_MESSAGE": False,
-        "OFFLINE_MESSAGE": False,
-        "GAME_MESSAGE": {},
-        "STREAMING_MESSAGE": False,
-        "LISTENING_MESSAGE": False,
     }
 
 
@@ -448,3 +439,7 @@ class Afk(commands.Cog):
             )
         await self._away.guild(ctx.guild).TEXT_ONLY.set(not text_only)
         await ctx.send(message)
+        
+ def setup(bot: Bot) -> None:
+    """Bot cog load."""
+    bot.add_cog(Afk(bot))       
