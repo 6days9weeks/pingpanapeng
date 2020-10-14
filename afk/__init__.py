@@ -1,3 +1,4 @@
+
 from .afk import Afk
 
 __red_end_user_data_statement__ = (
