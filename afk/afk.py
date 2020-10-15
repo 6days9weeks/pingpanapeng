@@ -388,10 +388,10 @@ class Afk(commands.Cog):
             if message is None:
                 await self._away.user(author).MESSAGE.set((" ", delete_after))
             else:
-                await self._away.user(author).MESSAGE.set((message, delete_after))
+                await self._away.user(author).MESSAGE.set((message.encode().decode("unicode_escape"), delete_after))
             msg = "You're now set as afk."
         await ctx.send(msg)
-
+        
     @commands.command(name="idle")
     async def idle_(self, ctx, delete_after: Optional[int] = None, *, message: str = None):
         """
