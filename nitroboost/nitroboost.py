@@ -33,6 +33,8 @@ class NitroRole(commands.Cog):
             message_templates=[],
             unassign_on_boost_end=False,
         )
+        self.message_images = cog_data_path(self) / "message_images"
+        self.message_images.mkdir(parents=True, exist_ok=True)
         self.guild_cache: Dict[int, GuildData] = {}
         # TODO: possibly load guild data in cache on load?
 
@@ -164,6 +166,31 @@ class NitroRole(commands.Cog):
             count="2",
             plural="s",
         )
+
+        filename = next(self.message_images.glob(f"{guild.id}.*"), None)
+        file = None
+        warning = ""
+        if filename is not None:
+            channel_id = guild_data.channel_id
+            channel = guild.get_channel(channel_id) if channel_id is not None else None
+            if (
+                channel is not None
+                and not channel.permissions_for(guild.me).attach_files
+            ):
+                warning = (
+                    "WARNING: Bot doesn't have permissions to send images"
+                    " in channel used for new booster messages.\n\n"
+                )
+
+            if not ctx.channel.permissions_for(guild.me).attach_files:
+                await ctx.send(
+                    f"{warning}New booster message set.\n"
+                    "I wasn't able to send test message here"
+                    ' due to missing "Attach files" permission.'
+                )
+                return
+
+            file = discord.File(str(filename))
         await ctx.send(
             f"{warning}New booster message set, sending a test message here..."
         )
@@ -371,6 +398,19 @@ class NitroRole(commands.Cog):
         message_templates = guild_data.message_templates
         if not message_templates:
             return
+
+        filename = next(self.message_images.glob(f"{guild.id}.*"), None)
+        file = None
+        if filename is not None:
+            if channel.permissions_for(guild.me).attach_files:
+                file = discord.File(str(filename))
+            else:
+                log.info(
+                    'Bot doesn\'t have "Attach files"'
+                    " in channel with ID %s (guild ID: %s)",
+                    channel_id,
+                    guild.id,
+                )
         count = guild.premium_subscription_count
         template = random.choice(message_templates)
         content = template.safe_substitute(
