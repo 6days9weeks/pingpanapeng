@@ -197,7 +197,7 @@ class NitroRole(commands.Cog):
         )
         embed=discord.Embed(title="<a:BoostingAnimated:717651091260702751>Someone just boosted the server!<a:BoostingAnimated:717651091260702751>", description=content, color=0xf47fff)
         embed.set_footer(text="If you see this you're cute & now boost the server.")
-        embed.set_thumbnail(url=avatar)
+        embed.set_thumbnail(url=content.avatar)
         await channel.send(embed=embed)
 
     @nitrorole.command(name="removemessage", aliases=["deletemessage"])
