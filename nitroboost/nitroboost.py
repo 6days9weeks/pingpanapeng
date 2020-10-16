@@ -161,6 +161,7 @@ class NitroRole(commands.Cog):
         template = await guild_data.add_message(message)
         content = template.safe_substitute(
             mention=ctx.author.mention,
+            avatar=ctx.author.avatar_url,
             username=ctx.author.display_name,
             server=guild.name,
             count="2",
@@ -196,7 +197,7 @@ class NitroRole(commands.Cog):
         )
         embed=discord.Embed(title="<a:BoostingAnimated:717651091260702751>Someone just boosted the server!<a:BoostingAnimated:717651091260702751>", description=content, color=0xf47fff)
         embed.set_footer(text="If you see this you're cute & now boost the server.")
-        embed.set_image(file)
+        embed.set_thumbnail(url=ctx.member.avatar_url)
         await channel.send(embed=embed)
 
     @nitrorole.command(name="removemessage", aliases=["deletemessage"])
@@ -416,6 +417,7 @@ class NitroRole(commands.Cog):
         template = random.choice(message_templates)
         content = template.safe_substitute(
             mention=member.mention,
+            avatar=member.avatar_url,
             username=member.display_name,
             server=guild.name,
             count=str(count),
@@ -424,7 +426,7 @@ class NitroRole(commands.Cog):
         try:
             embed=discord.Embed(title="<a:BoostingAnimated:717651091260702751>Someone just boosted the server!<a:BoostingAnimated:717651091260702751>", description=content, color=0xf47fff)
             embed.set_footer(text="If you see this you're cute & now boost the server.")
-            embed.set_image(file)
+            embed.set_thumbnail(url=avatar)
             await channel.send(embed=embed)
         except discord.Forbidden:
             log.error(
