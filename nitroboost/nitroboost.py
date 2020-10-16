@@ -159,6 +159,9 @@ class NitroRole(commands.Cog):
         guild = ctx.guild
         guild_data = await self.get_guild_data(guild)
         template = await guild_data.add_message(message)
+        imgt = template.safe_substitute(
+            avatar = ctx.author.avatar_url,
+        ) 
         content = template.safe_substitute(
             mention=ctx.author.mention,
             avatar=ctx.author.avatar_url,
@@ -197,7 +200,7 @@ class NitroRole(commands.Cog):
         )
         embed=discord.Embed(title="<a:BoostingAnimated:717651091260702751>Someone just boosted the server!<a:BoostingAnimated:717651091260702751>", description=content, color=0xf47fff)
         embed.set_footer(text="If you see this you're cute & now boost the server.")
-        embed.set_thumbnail(url=content.avatar)
+        embed.set_thumbnail(url=avatar)
         await channel.send(embed=embed)
 
     @nitrorole.command(name="removemessage", aliases=["deletemessage"])
@@ -415,9 +418,11 @@ class NitroRole(commands.Cog):
                 )
         count = guild.premium_subscription_count
         template = random.choice(message_templates)
+        imgt = template.safe_substitute(
+            avatar = member.avatar_url,
+        ) 
         content = template.safe_substitute(
             mention=member.mention,
-            avatar=member.avatar_url,
             username=member.display_name,
             server=guild.name,
             count=str(count),
