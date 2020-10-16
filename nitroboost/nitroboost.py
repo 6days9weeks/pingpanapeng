@@ -194,7 +194,10 @@ class NitroRole(commands.Cog):
         await ctx.send(
             f"{warning}New booster message set, sending a test message here..."
         )
-        await ctx.send(content, file=file)
+        embed=discord.Embed(title="<a:BoostingAnimated:717651091260702751>Someone just boosted the server!<a:BoostingAnimated:717651091260702751>", description=content, color=0xf47fff)
+        embed.set_footer(text="If you see this you're cute & now boost the server.")
+        embed.set_image(file)
+        await channel.send(embed=embed)
 
     @nitrorole.command(name="removemessage", aliases=["deletemessage"])
     async def nitrorole_removemessage(self, ctx: GuildContext) -> None:
@@ -419,7 +422,7 @@ class NitroRole(commands.Cog):
             plural="" if count == 1 else "s",
         )
         try:
-            embed=discord.Embed(title="Someone just boosted the server!", description=content, color=0xf47fff)
+            embed=discord.Embed(title="<a:BoostingAnimated:717651091260702751>Someone just boosted the server!<a:BoostingAnimated:717651091260702751>", description=content, color=0xf47fff)
             embed.set_footer(text="If you see this you're cute & now boost the server.")
             embed.set_image(file)
             await channel.send(embed=embed)
