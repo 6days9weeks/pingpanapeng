@@ -52,7 +52,7 @@ class JailCog(commands.Cog):
             print(3)
         else:
             role = discord.utils.get(ctx.guild.roles, name="horny timeout")
-                await member.add_roles(role)
+            await member.add_roles(role)
                 embed = discord.Embed(
                     title= "**Jail**",
                     description= f"{member.mention} has been jailed by {ctx.message.author.mention} for {time}s",
