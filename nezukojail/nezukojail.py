@@ -203,7 +203,7 @@ class JailCog(commands.Cog):
                     embed = discord.Embed(
                         title = "Jail",
                         description = f"{member.mention} has been jailed by {ctx.message.author.mention}.",
-                        color = self.blurple
+                        color = 0xffc2ff
                     )
                     await ctx.send(embed = embed)
 
