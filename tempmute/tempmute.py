@@ -56,9 +56,9 @@ class MuteCog(commands.Cog):
 
     @checks.has_permissions(PermissionLevel.MODERATOR)
 
-    async def tempmute(self, ctx, member:discord.Member, *, time:TimeConverter = None):
+    async def tjail(self, ctx, member:discord.Member, *, time:TimeConverter = None):
 
-        """Mutes a member for the specified time- time in 2d 10h 3m 2s format ex:
+        """Jails a member for the specified time- time in 2d 10h 3m 2s format ex:
 
         &mute @Someone 1d"""
 
@@ -72,7 +72,7 @@ class MuteCog(commands.Cog):
 
                 description= "Please specify a time",
 
-                color= 0xFF0000
+                color= 0xffc2ff
 
             )
 
@@ -86,9 +86,9 @@ class MuteCog(commands.Cog):
 
                 title= "Error",
 
-                description= "Please specify a member to mute",
+                description= "Please specify a member to jail",
 
-                color= 0xFF0000
+                color= 0xffc2ff
 
             )
 
@@ -98,11 +98,11 @@ class MuteCog(commands.Cog):
 
         else:
 
-            role = discord.utils.get(ctx.guild.roles, name="yu-mute")
+            role = discord.utils.get(ctx.guild.roles, name="horny timeout")
 
             if role == None:
 
-                role = await ctx.guild.create_role(name="yu-mute")
+                role = await ctx.guild.create_role(name="horny timeout")
 
                 for channel in ctx.guild.text_channels:
 
@@ -112,11 +112,11 @@ class MuteCog(commands.Cog):
 
                 embed = discord.Embed(
 
-                    title= "Mute",
+                    title= "Jail",
 
-                    description= f"{member.mention} has been muted by {ctx.message.author.mention} for {time}s",
+                    description= f"{member.mention} has been jail by {ctx.message.author.mention} for {time}s",
 
-                    color=0x00FF00
+                    color=0xffc2ff
 
                 )
 
@@ -126,11 +126,11 @@ class MuteCog(commands.Cog):
 
                 embed = discord.Embed(
 
-                    title= "Muted",
+                    title= "Jailed",
 
-                    description= f"You have been muted in {ctx.guiild.name} by {ctx.author.mention} for {time}",
+                    description= f"You have been jailed in {ctx.guiild.name} by {ctx.author.mention} for {time}",
 
-                    color=0x06c9ff
+                    color=0xffc2ff
 
                 )
 
@@ -148,9 +148,9 @@ class MuteCog(commands.Cog):
 
              
 
-    @tempmute.error
+    @tjail.error
 
-    async def tempmute_error(self, ctx, error):
+    async def tjail_error(self, ctx, error):
 
         if isinstance(error, commands.MissingPermissions):
 
@@ -158,9 +158,9 @@ class MuteCog(commands.Cog):
 
                 title="Error",
 
-                description="You do not have permissions to tempmute members!",
+                description="You do not have permissions to temp-jail members!",
 
-                color=0xFF0000
+                color=0xffc2ff
 
             )
 
