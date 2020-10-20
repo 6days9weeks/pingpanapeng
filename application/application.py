@@ -13,7 +13,7 @@ from redbot.core.bot import Red
 
 class Application(commands.Cog):
     """
-    Simple application cog, basically.
+    Simple application cog, tbf.
     **Use `[p]applysetup` first.**
     """
 
