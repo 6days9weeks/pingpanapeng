@@ -1,2 +1,2 @@
 jishaku
-speedtest
+speedtest-cli
