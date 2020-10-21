@@ -5,16 +5,14 @@ from random import choice
 
 import discord
 from discord.errors import Forbidden
-from discord.ext import commands
+from redbot.core import commands
 from discord.ext.commands.cooldowns import BucketType
 
 log = logging.getLogger(__name__)
-
-
 class Halloweenify(commands.Cog):
     """A cog to change a invokers nickname to a spooky one!"""
 
-    def __init__(self, bot: commands.Bot):
+    def __init__(self, bot: Red):
         self.bot = bot
 
     @commands.cooldown(1, 300, BucketType.user)
