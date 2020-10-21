@@ -7,7 +7,7 @@ import discord
 from PIL import Image
 from redbot.core import commands
 
-import spookification as spookifications
+import spookification
 
 log = logging.getLogger(__name__)
 
