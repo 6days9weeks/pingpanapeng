@@ -1,0 +1,8 @@
+{
+    "author" : ["6days9weeks"],
+    "install_msg" : "Thank you for installing my cog!",
+    "name" : "SpookyRating",
+    "short" : "Rate you spookiness",
+    "description" : "Just a simple cog which rates your spookiness.",
+    "tags" : ["halloween"]
+}
