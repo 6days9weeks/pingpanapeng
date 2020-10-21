@@ -12,7 +12,7 @@ log = logging.getLogger(__name__)
 class Halloweenify(commands.Cog):
     """A cog to change a invokers nickname to a spooky one!"""
 
-    def __init__(self, bot: Red):
+    def __init__(self, bot: commands.Bot):
         self.bot = bot
 
     @commands.cooldown(1, 300, BucketType.user)
