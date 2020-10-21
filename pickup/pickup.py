@@ -4,9 +4,7 @@ from json import load
 from pathlib import Path
 
 import discord
-from discord.ext import commands
-
-from bot.constants import Colours
+from redbot.core import commands
 
 log = logging.getLogger(__name__)
 
@@ -30,7 +28,7 @@ class PickupLine(commands.Cog):
         embed = discord.Embed(
             title=':cheese: Your pickup line :cheese:',
             description=random_line['line'],
-            color=Colours.pink
+            color=0xffc2ff
         )
         embed.set_thumbnail(
             url=random_line.get('image', pickup_lines['placeholder'])
