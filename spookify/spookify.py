@@ -7,7 +7,7 @@ import discord
 from PIL import Image
 from redbot.core import commands
 
-import spookification
+from . import spookification
 
 log = logging.getLogger(__name__)
 
@@ -38,7 +38,7 @@ class SpookyAvatar(commands.Cog):
 
             image_bytes = await ctx.author.avatar_url.read()
             im = Image.open(BytesIO(image_bytes))
-            modified_im = spookifications.get_random_effect(im)
+            modified_im = spookification.get_random_effect(im)
             modified_im.save(str(ctx.message.id)+'.png')
             f = discord.File(str(ctx.message.id)+'.png')
             embed.set_image(url='attachment://'+str(ctx.message.id)+'.png')
