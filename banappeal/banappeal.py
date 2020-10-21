@@ -35,7 +35,7 @@ class BanAppeal(commands.Cog):
                     await thread.close(closer=payload.member)
                     await user.ban()
                 except:
-                    return await msg.channel.send(f"Couldn't Ban {thread.recipient}! :(")
+                    return await msg.channel.send(f"Couldn't Ban {thread.recipient}!L :(")
 
 
 def setup(bot):
