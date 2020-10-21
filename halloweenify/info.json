@@ -1,0 +1,8 @@
+{
+    "author" : ["6days9weeks"],
+    "install_msg" : "Thank you for installing my cog!",
+    "name" : "Halloweenify",
+    "short" : "Makes your nickname spooky.",
+    "description" : "Just a simple cog which makes nicknames spooky.",
+    "tags" : ["halloween"]
+}
