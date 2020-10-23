@@ -45,3 +45,6 @@ class SpookyAvatar(commands.Cog):
 
         await ctx.send(file=f, embed=embed)
         os.remove(str(ctx.message.id)+'.png')
+        
+def setup(bot):
+    bot.add_cog(SpookyAvatar(bot))
