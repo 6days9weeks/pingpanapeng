@@ -27,7 +27,7 @@ class LoveCal(commands.Cog):
 
     @commands.command(aliases=('love_calculator', 'love_calc'))
     @commands.cooldown(rate=1, per=5, type=commands.BucketType.user)
-    async def love(self, ctx: commands.Context, who: Union[Member, str], whom: Union[Member, str] = None) -> None:
+    async def love(self, ctx: commands.Context, who: Optional[FuzzyMember], whom: Optional[FuzzyMember] = None) -> None:
         """
         Tells you how much the two love each other.
         This command also accepts users or arbitrary strings as arguments.
