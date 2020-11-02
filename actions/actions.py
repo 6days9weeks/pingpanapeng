@@ -13,6 +13,7 @@ class Action(commands.Cog):
         self.bot = bot
 
     @commands.command()
+    @commands.bot_has_permissions(embed_links=True)
     async def kiss(self, ctx, *, user: discord.Member):
         """Kiss a user!"""
 
@@ -21,13 +22,14 @@ class Action(commands.Cog):
 
         # Build Embed
         embed = discord.Embed(color=0xffc2ff)
-        embed.description = f"**{author.mention} kisses {user.mention}**"
+        embed.description = f"**{author.name} kisses {user.name}**"
         embed.set_footer(text="You both look cute")
         embed.set_image(url=kisses)
         await ctx.send(embed=embed)
         
    
     @commands.command()
+    @commands.bot_has_permissions(embed_links=True)
     async def pat(self, ctx, *, user: discord.Member):
         """Pat a user!"""
 
@@ -36,12 +38,13 @@ class Action(commands.Cog):
 
         # Build Embed
         embed = discord.Embed(color=0xffc2ff)
-        embed.description = f"**{author.mention} pats {user.mention}**"
+        embed.description = f"**{author.name} pats {user.name}**"
         embed.set_footer(text="You both look cute")
         embed.set_image(url=pats)
         await ctx.send(embed=embed)     
 
     @commands.command()
+    @commands.bot_has_permissions(embed_links=True)
     async def hug(self, ctx, *, user: discord.Member):
         """Hug a user!"""
 
@@ -50,12 +53,13 @@ class Action(commands.Cog):
 
         # Build Embed
         embed = discord.Embed(color=0xffc2ff)
-        embed.description = f"**{author.mention} hugs {user.mention}**"
+        embed.description = f"**{author.name} hugs {user.name}**"
         embed.set_footer(text="You both look cute")
         embed.set_image(url=hugs)
         await ctx.send(embed=embed)
 
     @commands.command()
+    @commands.bot_has_permissions(embed_links=True)
     async def slap(self, ctx, *, user: discord.Member):
         """Slap a user!"""
 
@@ -64,12 +68,13 @@ class Action(commands.Cog):
 
         # Build Embed
         embed = discord.Embed(color=0xffc2ff)
-        embed.description = f"**{author.mention} slaps {user.mention}**"
+        embed.description = f"**{author.name} slaps {user.name}**"
         embed.set_footer(text="You both look cute")
         embed.set_image(url=slaps)
         await ctx.send(embed=embed)        
 
     @commands.command()
+    @commands.bot_has_permissions(embed_links=True)
     async def baka(self, ctx, *, user: discord.Member):
         """Call a user baka!"""
 
@@ -78,13 +83,14 @@ class Action(commands.Cog):
 
         # Build Embed
         embed = discord.Embed(color=0xffc2ff)
-        embed.description = f"**{author.mention} calls {user.mention} baka**"
+        embed.description = f"**{author.name} calls {user.name} baka**"
         embed.set_footer(text="You both look cute")
         embed.set_image(url=bakas)
         await ctx.send(embed=embed)  
 
 
     @commands.command()
+    @commands.bot_has_permissions(embed_links=True)
     async def tickle(self, ctx, *, user: discord.Member):
         """Tickle someone"""
 
@@ -93,12 +99,13 @@ class Action(commands.Cog):
 
         # Build Embed
         embed = discord.Embed(color=0xffc2ff)
-        embed.description = f"**{author.mention} tickles {user.mention}**"
+        embed.description = f"**{author.name} tickles {user.name}**"
         embed.set_footer(text="You both look cute")
         embed.set_image(url=tickles)
         await ctx.send(embed=embed)
 
     @commands.command()
+    @commands.bot_has_permissions(embed_links=True)
     async def smug(self, ctx, *, user: discord.Member):
         """Smug at a user!"""
 
@@ -113,6 +120,7 @@ class Action(commands.Cog):
         await ctx.send(embed=embed)        
 
     @commands.command()
+    @commands.bot_has_permissions(embed_links=True)
     async def cuddle(self, ctx, *, user: discord.Member):
         """Cuddle a user!"""
 
@@ -121,12 +129,13 @@ class Action(commands.Cog):
 
         # Build Embed
         embed = discord.Embed(color=0xffc2ff)
-        embed.description = f"**{author.mention} cuddles {user.mention}**"
+        embed.description = f"**{author.name} cuddles {user.name}**"
         embed.set_footer(text="You both look cute")
         embed.set_image(url=cuddles)
         await ctx.send(embed=embed)   
 
     @commands.command()
+    @commands.bot_has_permissions(embed_links=True)
     async def poke(self, ctx, *, user: discord.Member):
         """Poke a user!"""
 
@@ -135,12 +144,13 @@ class Action(commands.Cog):
 
         # Build Embed
         embed = discord.Embed(color=0xffc2ff)
-        embed.description = f"**{author.mention} pokes {user.mention}**"
+        embed.description = f"**{author.mention} pokes {user.name}**"
         embed.set_footer(text="You both look cute")
         embed.set_image(url=pokes)
         await ctx.send(embed=embed)        
 
     @commands.command()
+    @commands.bot_has_permissions(embed_links=True)
     async def feed(self, ctx, *, user: discord.Member):
         """Feed a user!"""
 
@@ -149,7 +159,7 @@ class Action(commands.Cog):
 
         # Build Embed
         embed = discord.Embed(color=0xffc2ff)
-        embed.description = f"**{author.mention} feeds {user.mention}**"
+        embed.description = f"**{author.name} feeds {user.name}**"
         embed.set_footer(text="You both look cute")
         embed.set_image(url=feeds)
         await ctx.send(embed=embed)        
