@@ -17,7 +17,10 @@ log = logging.getLogger(__name__)
 with open(Path(__file__).parent / "love_matches.json", "r", encoding="utf8") as file:
     LOVE_DATA = json.load(file)
     LOVE_DATA = sorted((int(key), value) for key, value in LOVE_DATA.items())
-
+    
+def ship_url(love_percent, who, whom):
+    url2 = base_api_url + "/imagesgen/ship?percent=" + str(love_percent) + "&first_user=" + urllib.urlencode(url=who.avatar_url_as(static_format="png")) + "&second_user=" + urllib.urlencode(url=whom.avatar_url_as(static_format="png"))
+    return url2
 
 class LoveCal(commands.Cog):
     """A cog for calculating the love between two people.""" 
@@ -46,11 +49,6 @@ class LoveCal(commands.Cog):
 
         m = hashlib.sha256(who.encode() + whom.encode())
         love_percent = sum(m.digest()) % 101
-        
-        base_api_url = "https://api.martinethebot.com/v1"
-        def ship_url(love_percent, who, whom):
-          url = base_api_url + "/imagesgen/ship?percent=" + str(love_percent) + "&first_user=" + urllib.urlencode(url=who.avatar_url_as(static_format="png")) + "&second_user=" + urllib.urlencode(url=who.avatar_url_as(static_format="png"))
-          return url
 
         index = bisect.bisect(LOVE_DATA, (love_percent,)) - 1
         _, data = LOVE_DATA[index]
@@ -65,5 +63,7 @@ class LoveCal(commands.Cog):
             name='A letter from Dr. Love:',
             value=data['text']
         ) 
+        base_api_url = "https://api.martinethebot.com/v1" 
+        embed.set_image(ship_url(love_percent, who, whom))
         
         await ctx.send(embed=embed)
