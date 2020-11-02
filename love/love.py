@@ -58,8 +58,8 @@ class LoveCal(Cog):
 
 
         base_api_url = "https://api.martinethebot.com/v1"
-        def ship_url(percent, {who}, {whom}):
-          url = base_api_url + "/imagesgen/ship?precent=" + str({love_percent}) + "&first_user=" + urllib.urlencode({who}.avatar) + "&second_user=" + urllib.urlencode({whom}.avatar)
+        def ship_url(love_percent, who, whom):
+          url = base_api_url + "/imagesgen/ship?precent=" + str(love_percent) + "&first_user=" + urllib.urlencode(who.avatar_url) + "&second_user=" + urllib.urlencode(whom.avatar_url)
           return url 
 
         index = bisect.bisect(LOVE_DATA, (love_percent,)) - 1
