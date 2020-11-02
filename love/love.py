@@ -65,6 +65,6 @@ class LoveCal(commands.Cog):
           url = base_api_url + "/imagesgen/ship?precent=" + str(love_percent) + "&first_user=" + urllib.urlencode(who.avatar_url) + "&second_user=" + urllib.urlencode(whom.avatar_url)
           return url 
         
-        embed.set_image(url=url)
+        embed.set_image(url=ship_url)
 
         await ctx.send(embed=embed)
