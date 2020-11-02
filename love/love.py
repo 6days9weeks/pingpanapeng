@@ -21,7 +21,7 @@ with open(Path(__file__).parent / "love_matches.json", "r", encoding="utf8") as 
     LOVE_DATA = sorted((int(key), value) for key, value in LOVE_DATA.items())
 
 
-class LoveCal(Cog):
+class LoveCal(commands.Cog):
     """A cog for calculating the love between two people.""" 
 
     def __init__(self, bot: commands.Bot):
