@@ -47,9 +47,9 @@ class LoveCal(commands.Cog):
         m = hashlib.sha256(who.encode() + whom.encode())
         love_percent = sum(m.digest()) % 101
         
-       def ship_url(love_percent, who, whom):
-           url2 = "https://api.martinethebot.com/v1"  + "/imagesgen/ship?percent=" + str(love_percent) + "&first_user=" + urllib.parse.urlencode(url=who.avatar_url) + "&second_user=" + urllib.parse.urlencode(url=whom.avatar_url)
-           return url2
+        def ship_url(love_percent, who, whom):
+            url2 = "https://api.martinethebot.com/v1"  + "/imagesgen/ship?percent=" + str(love_percent) + "&first_user=" + urllib.parse.urlencode(url=who.avatar_url) + "&second_user=" + urllib.parse.urlencode(url=whom.avatar_url)
+            return url2
     
         index = bisect.bisect(LOVE_DATA, (love_percent,)) - 1
         _, data = LOVE_DATA[index]
