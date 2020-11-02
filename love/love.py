@@ -9,7 +9,8 @@ from typing import Union
 import urllib
 import discord
 from discord import Member
-from redbot.core import commands, checks, clean_content
+from discord.ext.commands import clean_content
+from redbot.core import commands, checks
 
 log = logging.getLogger(__name__)
 
