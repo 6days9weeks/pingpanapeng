@@ -4,7 +4,7 @@ import json
 import logging
 import random
 from pathlib import Path
-from typing import Union
+from typing import Dict, List, Literal, Optional, Tuple, Union, cast
 
 import urllib.parse
 import discord
