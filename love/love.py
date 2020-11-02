@@ -19,7 +19,7 @@ with open(Path(__file__).parent / "love_matches.json", "r", encoding="utf8") as 
     LOVE_DATA = sorted((int(key), value) for key, value in LOVE_DATA.items())
 
 def ship_url(love_percent, who, whom):
-    url2 = base_api_url + "/imagesgen/ship?percent=" + str(love_percent) + "&first_user=" + urllib.urlencode(url=who.avatar_url_as(static_format="png")) + "&second_user=" + urllib.urlencode(url=whom.avatar_url_as(static_format="png"))
+    url2 = "https://api.martinethebot.com/v1"  + "/imagesgen/ship?percent=" + str(love_percent) + "&first_user=" + urllib.urlencode(url=who.avatar_url_as(static_format="png")) + "&second_user=" + urllib.urlencode(url=whom.avatar_url_as(static_format="png"))
     return url2
 
 
@@ -64,7 +64,6 @@ class LoveCal(commands.Cog):
             name='A letter from Dr. Love:',
             value=data['text']
         )
-        base_api_url = "https://api.martinethebot.com/v1" 
         embed.set_image(ship_url(love_percent, who, whom))
         
         await ctx.send(embed=embed)
