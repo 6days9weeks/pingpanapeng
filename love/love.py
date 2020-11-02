@@ -39,7 +39,7 @@ class LoveCal(Cog):
     async def love(self, ctx: commands.Context, who: Union[Member, str], whom: Union[Member, str] = None) -> None:
         """
         Tells you how much the two love each other.
-        This command accepts users or arbitrary strings as arguments.
+        This command also accepts users or arbitrary strings as arguments.
         """
         def normalize(arg: Union[Member, str]) -> str:
             if isinstance(arg, Member):
