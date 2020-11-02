@@ -1,0 +1,8 @@
+{
+  "author" : ["6days9weeks"],
+  "install_msg" : "Interact with people using cool commands!",
+  "short" : "Interact with users",
+  "description" : "Interact with users using anime GIFs",
+  "tags" : ["interaction"],
+  "hidden" : false
+}
