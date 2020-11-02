@@ -9,10 +9,7 @@ from typing import Union
 import urllib
 import discord
 from discord import Member
-from discord.ext import commands
-from ext.command import command, group
-from ext.utils import get_perm_level, get_command_level, owner
-from discord.ext.commands import BadArgument, Cog, clean_content
+from redbot.core import commands, checks
 
 log = logging.getLogger(__name__)
 
