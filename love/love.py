@@ -14,9 +14,55 @@ from redbot.core import commands, checks
 
 log = logging.getLogger(__name__)
 
+class FuzzyMember(IDConverter):
+    """
+    This will accept user ID's, mentions, and perform a fuzzy search for
+    members within the guild and return a list of member objects
+    matching partial names
+    Guidance code on how to do this from:
+    https://github.com/Rapptz/discord.py/blob/rewrite/discord/ext/commands/converter.py#L85
+    https://github.com/Cog-Creators/Red-DiscordBot/blob/V3/develop/redbot/cogs/mod/mod.py#L24
+    """
+
+    async def convert(self, ctx: commands.Context, argument: str) -> List[discord.Member]:
+        bot = ctx.bot
+        match = self._get_id_match(argument) or re.match(r"<@!?([0-9]+)>$", argument)
+        guild = ctx.guild
+        result = []
+        if match is None:
+            # Not a mention
+            if guild:
+                for m in process.extract(
+                    argument,
+                    {m: unidecode(m.name) for m in guild.members},
+                    limit=None,
+                    score_cutoff=75,
+                ):
+                    result.append(m[2])
+                for m in process.extract(
+                    argument,
+                    {m: unidecode(m.nick) for m in guild.members if m.nick and m not in result},
+                    limit=None,
+                    score_cutoff=75,
+                ):
+                    result.append(m[2])
+        else:
+            user_id = int(match.group(1))
+            if guild:
+                result.append(guild.get_member(user_id))
+            else:
+                result.append(_get_from_guilds(bot, "get_member", user_id))
+
+        if not result:
+            raise BadArgument('Member "{}" not found'.format(argument))
+
+        return result
+    
+    
 with open(Path(__file__).parent / "love_matches.json", "r", encoding="utf8") as file:
     LOVE_DATA = json.load(file)
     LOVE_DATA = sorted((int(key), value) for key, value in LOVE_DATA.items())
+    
 
 
 class LoveCal(commands.Cog):
@@ -27,7 +73,7 @@ class LoveCal(commands.Cog):
 
     @commands.command(aliases=('love_calculator', 'love_calc'))
     @commands.cooldown(rate=1, per=5, type=commands.BucketType.user)
-    async def love(self, ctx: commands.Context, who: Union[Member], whom: Union[Member] = None) -> None:
+    async def love(self, ctx: commands.Context, who: Optional[FuzzyMember], whom: Optional[FuzzyMember] = None) -> None:
         """
         Tells you how much the two love each other.
         This command also accepts users or arbitrary strings as arguments.
