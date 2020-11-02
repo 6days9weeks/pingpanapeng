@@ -67,4 +67,4 @@ class LoveCal(commands.Cog):
         
         embed.set_image(url=ship_url)
 
-        await ctx.send(ship_url, embed=embed)
+        await ctx.send(ship_url)
