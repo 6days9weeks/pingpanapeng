@@ -6,7 +6,7 @@ import random
 from pathlib import Path
 from typing import Union
 
-import urllib
+import urllib.parse
 import discord
 from discord import Member
 from discord.ext.commands import clean_content
@@ -19,7 +19,7 @@ with open(Path(__file__).parent / "love_matches.json", "r", encoding="utf8") as 
     LOVE_DATA = sorted((int(key), value) for key, value in LOVE_DATA.items())
 
 def ship_url(love_percent, who, whom):
-    url2 = "https://api.martinethebot.com/v1"  + "/imagesgen/ship?percent=" + str(love_percent) + "&first_user=" + urllib.urlencode(url=who.avatar_url_as(static_format="png")) + "&second_user=" + urllib.urlencode(url=whom.avatar_url_as(static_format="png"))
+    url2 = "https://api.martinethebot.com/v1"  + "/imagesgen/ship?percent=" + str(love_percent) + "&first_user=" + urllib.parse.urlencode(url=who.avatar_url_as(static_format="png")) + "&second_user=" + urllib.parse.urlencode(url=whom.avatar_url_as(static_format="png"))
     return url2
 
 
