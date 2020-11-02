@@ -63,8 +63,8 @@ class LoveCal(commands.Cog):
         base_api_url = "https://api.martinethebot.com/v1"
         def ship_url(love_percent, who, whom):
           url = base_api_url + "/imagesgen/ship?percent=" + str(love_percent) + "&first_user=" + urllib.urlencode(url=who.avatar_url_as(static_format="png")) + "&second_user=" + urllib.urlencode(url=who.avatar_url_as(static_format="png"))
-          return url 
+          return ship_url 
         
         embed.set_image(url=ship_url)
 
-        await ctx.send(url)
+        await ctx.send(ship_url)
