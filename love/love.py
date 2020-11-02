@@ -22,14 +22,7 @@ with open(Path(__file__).parent / "love_matches.json", "r", encoding="utf8") as 
 
 
 class LoveCal(Cog):
-    """A cog for calculating the love between two people."""
-
-
-
-    base_api_url = "https://api.martinethebot.com/v1"
-    def ship_url(percent, {who}, {whom}):
-      url = base_api_url + "/imagesgen/ship?precent=" + str({love_percent}) + "&first_user=" + urllib.urlencode({who}.avatar) + "&second_user=" + urllib.urlencode({whom}.avatar)
-      return url   
+    """A cog for calculating the love between two people.""" 
 
     def __init__(self, bot: commands.Bot):
         self.bot = bot    
