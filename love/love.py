@@ -47,12 +47,6 @@ class LoveCal(commands.Cog):
         m = hashlib.sha256(who.encode() + whom.encode())
         love_percent = sum(m.digest()) % 101
 
-
-        base_api_url = "https://api.martinethebot.com/v1"
-        def ship_url(love_percent, who, whom):
-          url = base_api_url + "/imagesgen/ship?precent=" + str(love_percent) + "&first_user=" + urllib.urlencode(who.avatar_url) + "&second_user=" + urllib.urlencode(whom.avatar_url)
-          return url 
-
         index = bisect.bisect(LOVE_DATA, (love_percent,)) - 1
         _, data = LOVE_DATA[index]
 
@@ -66,6 +60,11 @@ class LoveCal(commands.Cog):
             name='A letter from Dr. Love:',
             value=data['text']
         )
+        base_api_url = "https://api.martinethebot.com/v1"
+        def ship_url(love_percent, who, whom):
+          url = base_api_url + "/imagesgen/ship?precent=" + str(love_percent) + "&first_user=" + urllib.urlencode(who.avatar_url) + "&second_user=" + urllib.urlencode(whom.avatar_url)
+          return url 
+        
         embed.set_image(url=url)
 
         await ctx.send(embed=embed)
