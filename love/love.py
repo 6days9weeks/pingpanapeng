@@ -65,6 +65,5 @@ class LoveCal(commands.Cog):
             name='A letter from Dr. Love:',
             value=data['text']
         ) 
-        embed.set_image(url)
         
         await ctx.send(embed=embed)
