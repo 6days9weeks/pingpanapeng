@@ -61,15 +61,6 @@ class CustomPing(commands.Cog):
         else:
             color = discord.Colour.green()
 
-        e.color = color
-        e.title = "Pong!"
-        e.description = e.description + f"\n<:host:759076038688505896> Host Latency: {hostPing}ms"
-        await asyncio.sleep(0.25)
-        try:
-            await message.edit(embed=e)
-        except discord.NotFound:
-            return
-
     @ping.command()
     async def moreinfo(self, ctx: commands.Context):
         """Ping with additional latency stastics."""
