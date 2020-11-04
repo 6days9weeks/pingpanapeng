@@ -7,7 +7,6 @@ import datetime
 import time
 
 import discord
-import speedtest
 from redbot.core import checks, commands
 
 old_ping = None
@@ -54,15 +53,6 @@ class CustomPing(commands.Cog):
             await message.edit(embed=e)
         except discord.NotFound:
             return
-
-        executor = concurrent.futures.ThreadPoolExecutor(max_workers=1)
-        loop = asyncio.get_event_loop()
-        s = speedtest.Speedtest(secure=True)
-        await loop.run_in_executor(executor, s.get_servers)
-        await loop.run_in_executor(executor, s.get_best_server)
-        result = s.results.dict()
-        hostPing = round(result["ping"], 2)
-
         averagePing = (botPing + totalPing) / 2
         if averagePing >= 1000:
             color = discord.Colour.red()
