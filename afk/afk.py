@@ -103,7 +103,7 @@ class Afk(commands.Cog):
             artist_title = f"{author.activity.title} by " + ", ".join(
                 a for a in author.activity.artists
             )
-            limit = 256 - (
+            limit = 500 - (
                 len(author.display_name) + 27
             )  # incase we go over the max allowable size
             em.set_author(
@@ -123,7 +123,7 @@ class Afk(commands.Cog):
             em = discord.Embed(color=activity[0].color)
             url = f"https://open.spotify.com/track/{activity[0].track_id}"
             artist_title = f"{activity[0].title} by " + ", ".join(a for a in activity[0].artists)
-            limit = 256 - (len(author.display_name) + 27)
+            limit = 500 - (len(author.display_name) + 27)
             em.set_author(
                 name=f"{author.display_name} is currently listening to",
                 icon_url=avatar,
