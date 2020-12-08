@@ -51,6 +51,6 @@ class Wss(commands.Cog):
                 ),
                 add_image=add_chart,
             ),
-            header=f"{chat.humanize_number(total)} socket events observed (<:apm:677494331166425128> {cpm:.2f}):",
+            header=f"{chat.humanize_number(total)} socket events observed (<:apm:785823930287128596> {cpm:.2f}):",
             image=chart,
         ).start(ctx)
