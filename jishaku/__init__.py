@@ -1,2 +1,5 @@
+from .jishaku_cog import Jishaku
+
+
 def setup(bot):
-    bot.load_extension("jishaku")
+    bot.add_cog(Jishaku(bot))
