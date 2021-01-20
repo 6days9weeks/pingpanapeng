@@ -24,9 +24,14 @@ class SpookyAvatar(commands.Cog):
             async with session.get(url) as resp:
                 return await resp.read()
 
-    @commands.command(name='savatar', aliases=('spookyavatar', 'spookify'),
-                      brief='Spookify an user\'s avatar.')
-    async def spooky_avatar(self, ctx: commands.Context, user: discord.Member = None) -> None:
+    @commands.command(
+        name="savatar",
+        aliases=("spookyavatar", "spookify"),
+        brief="Spookify an user's avatar.",
+    )
+    async def spooky_avatar(
+        self, ctx: commands.Context, user: discord.Member = None
+    ) -> None:
         """A command to print the user's spookified avatar."""
         if user is None:
             user = ctx.message.author
@@ -39,9 +44,9 @@ class SpookyAvatar(commands.Cog):
             image_bytes = await ctx.author.avatar_url.read()
             im = Image.open(BytesIO(image_bytes))
             modified_im = spookification.get_random_effect(im)
-            modified_im.save(str(ctx.message.id)+'.png')
-            f = discord.File(str(ctx.message.id)+'.png')
-            embed.set_image(url='attachment://'+str(ctx.message.id)+'.png')
+            modified_im.save(str(ctx.message.id) + ".png")
+            f = discord.File(str(ctx.message.id) + ".png")
+            embed.set_image(url="attachment://" + str(ctx.message.id) + ".png")
 
         await ctx.send(file=f, embed=embed)
-        os.remove(str(ctx.message.id)+'.png')
+        os.remove(str(ctx.message.id) + ".png")

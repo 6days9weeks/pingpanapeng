@@ -1,11 +1,10 @@
 import datetime
 
 import discord
-from discord.ext import commands
-
 from core import checks
-from core.models import PermissionLevel
 from core.decorators import trigger_typing
+from core.models import PermissionLevel
+from discord.ext import commands
 
 
 class Uptime(commands.Cog):

@@ -1,7 +1,7 @@
-from discord.ext import commands as commands
-from core import checks
 import discord
+from core import checks
 from core.models import PermissionLevel
+from discord.ext import commands as commands
 
 
 class WebhookSender(commands.Cog):
@@ -13,11 +13,13 @@ class WebhookSender(commands.Cog):
     @checks.has_permissions(PermissionLevel.ADMINISTRATOR)
     async def sudo(self, ctx, member: discord.Member, *, msg):
         """
-       Send webhooks which look like a user is saying something.
+        Send webhooks which look like a user is saying something.
         """
 
         webhook = await ctx.channel.create_webhook(name="su")
-        await webhook.send(content=msg, username=member.name, avatar_url=member.avatar_url)
+        await webhook.send(
+            content=msg, username=member.name, avatar_url=member.avatar_url
+        )
         await webhook.delete()
 
         message = ctx.message
@@ -25,5 +27,7 @@ class WebhookSender(commands.Cog):
         message.content = msg
         await self.bot.process_commands(message)
         await ctx.message.delete()
+
+
 def setup(bot):
     bot.add_cog(WebhookSender(bot))

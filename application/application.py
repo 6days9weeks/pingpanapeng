@@ -1,14 +1,12 @@
 import asyncio
-import discord
-
-from discord.utils import get
 from datetime import datetime, timedelta
 
+import discord
+from discord.utils import get
 from redbot.core import Config, checks, commands
-from redbot.core.utils.predicates import MessagePredicate
-from redbot.core.utils.antispam import AntiSpam
-
 from redbot.core.bot import Red
+from redbot.core.utils.antispam import AntiSpam
+from redbot.core.utils.predicates import MessagePredicate
 
 
 class Application(commands.Cog):
@@ -38,21 +36,30 @@ class Application(commands.Cog):
     async def apply(self, ctx: commands.Context):
         """Apply to be a staff member."""
         try:
-            role_add = get(ctx.guild.roles, id = await self.config.guild(ctx.guild).applicant_id())
+            role_add = get(
+                ctx.guild.roles, id=await self.config.guild(ctx.guild).applicant_id()
+            )
         except TypeError:
             role_add = None
         if not role_add:
-            role_add = get(ctx.guild.roles, name = "Staff Applicant")
+            role_add = get(ctx.guild.roles, name="Staff Applicant")
             if not role_add:
-                return await ctx.send("Uh oh, the configuration is not correct. Ask the Admins to set it.")
+                return await ctx.send(
+                    "Uh oh, the configuration is not correct. Ask the Admins to set it."
+                )
         try:
-            channel = get(ctx.guild.text_channels, id = await self.config.guild(ctx.guild).channel_id())
+            channel = get(
+                ctx.guild.text_channels,
+                id=await self.config.guild(ctx.guild).channel_id(),
+            )
         except TypeError:
             channel = None
         if not channel:
-            channel = get(ctx.guild.text_channels, name = "applications")
+            channel = get(ctx.guild.text_channels, name="applications")
             if not channel:
-                return await ctx.send("Uh oh, the configuration is not correct. Ask the Admins to set it.")
+                return await ctx.send(
+                    "Uh oh, the configuration is not correct. Ask the Admins to set it."
+                )
         if ctx.guild not in self.antispam:
             self.antispam[ctx.guild] = {}
         if ctx.author not in self.antispam[ctx.guild]:
@@ -121,26 +128,32 @@ class Application(commands.Cog):
             about = await self.bot.wait_for("message", timeout=120, check=check)
         except asyncio.TimeoutError:
             return await ctx.send("You took too long. Try again, please.")
-        await ctx.author.send("What do you like the most about our server?")    
+        await ctx.author.send("What do you like the most about our server?")
         try:
             like = await self.bot.wait_for("message", timeout=120, check=check)
         except asyncio.TimeoutError:
             return await ctx.send("You took too long. Try again, please.")
-        await ctx.author.send("How do you suppose you can help the server by being a staff member?") 
+        await ctx.author.send(
+            "How do you suppose you can help the server by being a staff member?"
+        )
         try:
             helpz = await self.bot.wait_for("message", timeout=120, check=check)
         except asyncio.TimeoutError:
             return await ctx.send("You took too long. Try again, please.")
-        await ctx.author.send("Do you have any other skills except moderation? (like gfx designing/coding) [If yes, describe briefly and provide proof of some of your work] (Send 0 or i dont if you don't want to answer)")
+        await ctx.author.send(
+            "Do you have any other skills except moderation? (like gfx designing/coding) [If yes, describe briefly and provide proof of some of your work] (Send 0 or i dont if you don't want to answer)"
+        )
         try:
             skills = await self.bot.wait_for("message", timeout=120, check=check)
         except asyncio.TimeoutError:
             return await ctx.send("You took too long. Try again, please.")
-        await ctx.author.send("Are you fully aware of our server rules and Discord TOS?")
+        await ctx.author.send(
+            "Are you fully aware of our server rules and Discord TOS?"
+        )
         try:
             tos = await self.bot.wait_for("message", timeout=120, check=check)
         except asyncio.TimeoutError:
-            return await ctx.send("You took too long. Try again, please.")       
+            return await ctx.send("You took too long. Try again, please.")
 
         embed = discord.Embed(color=await ctx.embed_colour(), timestamp=datetime.now())
         embed.set_author(name="New application!", icon_url=ctx.author.avatar_url)
@@ -257,7 +270,9 @@ class Application(commands.Cog):
 
         <target> can be a mention or an ID."""
         try:
-            accepter = get(ctx.guild.roles, id = await self.config.guild(ctx.guild).accepter_id())
+            accepter = get(
+                ctx.guild.roles, id=await self.config.guild(ctx.guild).accepter_id()
+            )
         except TypeError:
             accepter = None
         if not accepter:
@@ -267,13 +282,17 @@ class Application(commands.Cog):
             if accepter not in ctx.author.roles:
                 return await ctx.send("Uh oh, you cannot use this command.")
         try:
-            applicant = get(ctx.guild.roles, id = await self.config.guild(ctx.guild).applicant_id())
+            applicant = get(
+                ctx.guild.roles, id=await self.config.guild(ctx.guild).applicant_id()
+            )
         except TypeError:
             applicant = None
         if not applicant:
             applicant = get(ctx.guild.roles, name="Staff Applicant")
             if not applicant:
-                return await ctx.send("Uh oh, the configuration is not correct. Ask the Admins to set it.")
+                return await ctx.send(
+                    "Uh oh, the configuration is not correct. Ask the Admins to set it."
+                )
         role = MessagePredicate.valid_role(ctx)
         if applicant in target.roles:
             await ctx.send(f"What role do you want to accept {target.name} as?")
@@ -285,7 +304,9 @@ class Application(commands.Cog):
             try:
                 await target.add_roles(role_add)
             except discord.Forbidden:
-                return await ctx.send("Uh oh, I cannot give them the role. It might be above all of my roles.")
+                return await ctx.send(
+                    "Uh oh, I cannot give them the role. It might be above all of my roles."
+                )
             await target.remove_roles(applicant)
             await ctx.send(f"Accepted {target.mention} as {role_add}.")
             await target.send(
@@ -304,7 +325,9 @@ class Application(commands.Cog):
 
         <target> can be a mention or an ID"""
         try:
-            accepter = get(ctx.guild.roles, id = await self.config.guild(ctx.guild).accepter_id())
+            accepter = get(
+                ctx.guild.roles, id=await self.config.guild(ctx.guild).accepter_id()
+            )
         except TypeError:
             accepter = None
         if not accepter:
@@ -314,13 +337,17 @@ class Application(commands.Cog):
             if accepter not in ctx.author.roles:
                 return await ctx.send("Uh oh, you cannot use this command.")
         try:
-            applicant = get(ctx.guild.roles, id = await self.config.guild(ctx.guild).applicant_id())
+            applicant = get(
+                ctx.guild.roles, id=await self.config.guild(ctx.guild).applicant_id()
+            )
         except TypeError:
             applicant = None
         if not applicant:
             applicant = get(ctx.guild.roles, name="Staff Applicant")
             if not applicant:
-                return await ctx.send("Uh oh, the configuration is not correct. Ask the Admins to set it.")
+                return await ctx.send(
+                    "Uh oh, the configuration is not correct. Ask the Admins to set it."
+                )
         if applicant in target.roles:
             await ctx.send("Would you like to specify a reason? (yes/no)")
             pred = MessagePredicate.yes_or_no(ctx)

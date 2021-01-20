@@ -3,13 +3,12 @@ import re
 from typing import List, Union
 
 import discord
-from unidecode import unidecode
-
-from rapidfuzz import process
 from discord.ext.commands.converter import IDConverter, _get_from_guilds
 from discord.ext.commands.errors import BadArgument
+from rapidfuzz import process
 from redbot.core import commands
 from redbot.core.i18n import Translator
+from unidecode import unidecode
 
 _ = Translator("ServerStats", __file__)
 log = logging.getLogger("red.trusty-cogs.ServerStats")
@@ -25,7 +24,9 @@ class FuzzyMember(IDConverter):
     https://github.com/Cog-Creators/Red-DiscordBot/blob/V3/develop/redbot/cogs/mod/mod.py#L24
     """
 
-    async def convert(self, ctx: commands.Context, argument: str) -> List[discord.Member]:
+    async def convert(
+        self, ctx: commands.Context, argument: str
+    ) -> List[discord.Member]:
         bot = ctx.bot
         match = self._get_id_match(argument) or re.match(r"<@!?([0-9]+)>$", argument)
         guild = ctx.guild
@@ -42,7 +43,11 @@ class FuzzyMember(IDConverter):
                     result.append(m[2])
                 for m in process.extract(
                     argument,
-                    {m: unidecode(m.nick) for m in guild.members if m.nick and m not in result},
+                    {
+                        m: unidecode(m.nick)
+                        for m in guild.members
+                        if m.nick and m not in result
+                    },
                     limit=None,
                     score_cutoff=75,
                 ):

@@ -1,8 +1,9 @@
 import asyncio
+
 import discord
-from discord.ext import commands
 from core import checks
 from core.models import PermissionLevel
+from discord.ext import commands
 
 
 class Moderation(commands.Cog):
@@ -64,9 +65,7 @@ class Moderation(commands.Cog):
                     title="Error",
                     description="I don't have enough permissions to write in that channel.",
                     color=discord.Color.red(),
-                ).set_footer(
-                    text="Please fix the permissions."
-                )
+                ).set_footer(text="Please fix the permissions.")
             )
         else:
             await self.db.find_one_and_update(
@@ -86,13 +85,20 @@ class Moderation(commands.Cog):
         """Sets up the muted role."""
         if role is None:
             if (await self.db.find_one({"_id": "muterole"})) is not None:
-                if ctx.guild.get_role((await self.db.find_one({"_id": "muterole"}))["id"]) != None:
+                if (
+                    ctx.guild.get_role(
+                        (await self.db.find_one({"_id": "muterole"}))["id"]
+                    )
+                    != None
+                ):
                     return await ctx.send(
                         embed=discord.Embed(
                             title="Error",
                             description="Muted role is already set up.",
                             color=discord.Color.red(),
-                        ).set_footer(text="If you want to change role, just mention it.")
+                        ).set_footer(
+                            text="If you want to change role, just mention it."
+                        )
                     )
             role = await ctx.guild.create_role(name="Muted")
 
@@ -123,7 +129,9 @@ class Moderation(commands.Cog):
 
         case = await self.get_case()
 
-        msg = f"You have been warned in {ctx.guild.name}" + (f" for: {reason}" if reason else ".")
+        msg = f"You have been warned in {ctx.guild.name}" + (
+            f" for: {reason}" if reason else "."
+        )
 
         await self.log(
             embed=discord.Embed(
@@ -181,11 +189,9 @@ class Moderation(commands.Cog):
                     title="Error",
                     description="I don't have enough permissions to kick them.",
                     color=discord.Color.red(),
-                ).set_footer(
-                    text="Please fix the permissions."
-                )
+                ).set_footer(text="Please fix the permissions.")
             )
-        
+
         case = await self.get_case()
 
         await self.log(
@@ -233,9 +239,7 @@ class Moderation(commands.Cog):
                     title="Error",
                     description="I don't have enough permissions to ban them.",
                     color=discord.Color.red(),
-                ).set_footer(
-                    text="Please fix the permissions."
-                )
+                ).set_footer(text="Please fix the permissions.")
             )
 
         case = await self.get_case()
@@ -288,7 +292,9 @@ class Moderation(commands.Cog):
                 )
             )
 
-        msg = f"You have been muted from {ctx.guild.name}" + (f" for: {reason}" if reason else ".")
+        msg = f"You have been muted from {ctx.guild.name}" + (
+            f" for: {reason}" if reason else "."
+        )
 
         try:
             await member.send(msg)
@@ -303,9 +309,7 @@ class Moderation(commands.Cog):
                     title="Error",
                     description="I don't have enough permissions to mute them.",
                     color=discord.Color.red(),
-                ).set_footer(
-                    text="Please fix the permissions."
-                )
+                ).set_footer(text="Please fix the permissions.")
             )
 
         case = await self.get_case()
@@ -366,13 +370,10 @@ class Moderation(commands.Cog):
                     title="Error",
                     description="I don't have enough permissions to unmute them.",
                     color=discord.Color.red(),
-                ).set_footer(
-                    text="Please fix the permissions."
-                )
+                ).set_footer(text="Please fix the permissions.")
             )
-        
-        case = await self.get_case()
 
+        case = await self.get_case()
 
         await self.log(
             embed=discord.Embed(
@@ -417,13 +418,17 @@ class Moderation(commands.Cog):
         try:
             sure = await self.bot.wait_for("message", check=surecheck, timeout=30)
         except asyncio.TimeoutError:
-            await message.edit(embed=discord.Embed(title="Aborted.", color=self.bot.main_color))
+            await message.edit(
+                embed=discord.Embed(title="Aborted.", color=self.bot.main_color)
+            )
             ensured = False
         else:
             if sure.content == "Yes, do as I say!":
                 ensured = True
             else:
-                await message.edit(embed=discord.Embed(title="Aborted.", color=self.bot.main_color))
+                await message.edit(
+                    embed=discord.Embed(title="Aborted.", color=self.bot.main_color)
+                )
                 ensured = False
         if ensured:
             case = await self.get_case()
@@ -440,10 +445,8 @@ class Moderation(commands.Cog):
                     embed=discord.Embed(
                         title="Error",
                         description="I don't have enough permissions to nuke this channel.",
-                        color=discord.Color.red()
-                    ).set_footer(
-                        text="Please fix the permissions."
-                    )
+                        color=discord.Color.red(),
+                    ).set_footer(text="Please fix the permissions.")
                 )
 
             await new_channel.send(
@@ -451,11 +454,11 @@ class Moderation(commands.Cog):
                     title="Nuke",
                     description="This channel has been nuked!",
                     color=self.bot.main_color,
-                ).set_image(
-                    url="https://cdn.discordapp.com/attachments/600843048724987925/600843407228928011/tenor.gif"
-                ).set_footer(
-                    text=f"This is the {case} case."
                 )
+                .set_image(
+                    url="https://cdn.discordapp.com/attachments/600843048724987925/600843407228928011/tenor.gif"
+                )
+                .set_footer(text=f"This is the {case} case.")
             )
 
             await self.log(
@@ -463,14 +466,12 @@ class Moderation(commands.Cog):
                     title="Nuke",
                     description=f"{ctx.author.mention} nuked {new_channel.mention}.",
                     color=self.bot.main_color,
-                ).set_footer(
-                    text=f"This is the {case} case."
-                )
+                ).set_footer(text=f"This is the {case} case.")
             )
-    
+
     @commands.command(usage="<amount>")
     @checks.has_permissions(PermissionLevel.MODERATOR)
-    async def purge(self, ctx, amount: int=1):
+    async def purge(self, ctx, amount: int = 1):
         """Purge the specified amount of messages."""
         max = 2000
         if amount > max:
@@ -478,10 +479,8 @@ class Moderation(commands.Cog):
                 embed=discord.Embed(
                     title="Error",
                     description=f"You can only purge up to 2000 messages.",
-                    color=discord.Color.red()
-                ).set_footer(
-                    text=f"Use {ctx.prefix}nuke to purge the entire chat."
-                )
+                    color=discord.Color.red(),
+                ).set_footer(text=f"Use {ctx.prefix}nuke to purge the entire chat.")
             )
 
         try:
@@ -492,10 +491,8 @@ class Moderation(commands.Cog):
                 embed=discord.Embed(
                     title="Error",
                     description="I don't have enough permissions to purge messages.",
-                    color=discord.Color.red()
-                ).set_footer(
-                    text="Please fix the permissions."
-                )
+                    color=discord.Color.red(),
+                ).set_footer(text="Please fix the permissions.")
             )
 
         case = await self.get_case()
@@ -506,21 +503,17 @@ class Moderation(commands.Cog):
             embed=discord.Embed(
                 title="Purge",
                 description=f"{amount} {messages} {have} been purged by {ctx.author.mention}.",
-                color=self.bot.main_color
+                color=self.bot.main_color,
             )
         )
-        
+
         await ctx.send(
             embed=discord.Embed(
                 title="Success",
                 description=f"Purged {amount} {messages}.",
-                color=self.bot.main_color
-            ).set_footer(
-                text=f"This is the {case} case!"
-            )
+                color=self.bot.main_color,
+            ).set_footer(text=f"This is the {case} case!")
         )
-
-
 
     async def get_case(self):
         """Gives the case number."""
@@ -533,7 +526,9 @@ class Moderation(commands.Cog):
         else:
             num = 0
         num += 1
-        await self.db.find_one_and_update({"_id": "cases"}, {"$set": {"amount": num}}, upsert=True)
+        await self.db.find_one_and_update(
+            {"_id": "cases"}, {"$set": {"amount": num}}, upsert=True
+        )
         suffix = ["th", "st", "nd", "rd", "th"][min(num % 10, 4)]
         if 11 <= (num % 100) <= 13:
             suffix = "th"

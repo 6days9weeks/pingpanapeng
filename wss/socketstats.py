@@ -1,9 +1,11 @@
-from redbot.core import commands
 import datetime
-from .socketstatsmenu import *
 from collections import Counter
+
+from redbot.core import commands
 from redbot.core.utils import AsyncIter
 from tabulate import tabulate
+
+from .socketstatsmenu import *
 
 
 class Wss(commands.Cog):

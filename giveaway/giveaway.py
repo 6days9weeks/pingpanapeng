@@ -1,14 +1,14 @@
 import asyncio
-import aiohttp
-import discord
 import math
 import random
 import time
 from datetime import datetime
-from discord.ext import commands
 
+import aiohttp
+import discord
 from core import checks
 from core.models import PermissionLevel
+from discord.ext import commands
 
 
 class GiveawayPlugin(commands.Cog):
@@ -26,7 +26,9 @@ class GiveawayPlugin(commands.Cog):
         config = await self.db.find_one({"_id": "config"})
         if config is None:
             await self.db.find_one_and_update(
-                {"_id": "config"}, {"$set": {"giveaways": dict()}}, upsert=True,
+                {"_id": "config"},
+                {"$set": {"giveaways": dict()}},
+                upsert=True,
             )
 
         for key, giveaway in config.get("giveaways", {}).items():

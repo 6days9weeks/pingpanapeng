@@ -1,9 +1,0 @@
-{
-  "author" : ["6days9weeks"],
-  "bot_version": [3,0,0],
-  "install_msg" : "Track how much a staff worked each week or month",
-  "short" : "Staff Check In/Out",
-  "description" : "This is the greatest Staff Tracker of All time",
-  "tags" : ["tracker", "reminder"],
-  "hidden" : false
-}

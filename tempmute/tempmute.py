@@ -1,25 +1,15 @@
-import discord 
-
-from discord.ext import commands
-
-from core import checks
-
-from core.models import PermissionLevel
-
+import asyncio
 import re
 
-import asyncio
-
-import sys
-
-import traceback
+import discord
+from discord.ext import commands
 
 time_regex = re.compile("(?:(\d{1,5})(h|s|m|d))+?")
 
-time_dict = {"h":3600, "s":1, "m":60, "d":86400}
+time_dict = {"h": 3600, "s": 1, "m": 60, "d": 86400}
+
 
 class TimeConverter(commands.Converter):
-
     async def convert(self, ctx, argument):
 
         args = argument.lower()
@@ -36,7 +26,9 @@ class TimeConverter(commands.Converter):
 
             except KeyError:
 
-                raise commands.BadArgument("{} is an invalid time-key! h/m/s/d are valid!".format(k))
+                raise commands.BadArgument(
+                    "{} is an invalid time-key! h/m/s/d are valid!".format(k)
+                )
 
             except ValueError:
 
@@ -44,19 +36,15 @@ class TimeConverter(commands.Converter):
 
         return time
 
-class MuteCog(commands.Cog):
 
+class MuteCog(commands.Cog):
     def __init__(self, bot):
 
-        self.bot = bot    
-
-    
+        self.bot = bot
 
     @commands.command()
-
-    @checks.has_permissions(PermissionLevel.MODERATOR)
-
-    async def tjail(self, ctx, member:discord.Member, *, time:TimeConverter = None):
+    @commands.has_permissions(manage_messages=True)
+    async def tjail(self, ctx, member: discord.Member, *, time: TimeConverter = None):
 
         """Jails a member for the specified time- time in 2d 10h 3m 2s format ex:
 
@@ -67,13 +55,7 @@ class MuteCog(commands.Cog):
         if time == None:
 
             embed = discord.Embed(
-
-                title= "Error",
-
-                description= "Please specify a time",
-
-                color= 0xffc2ff
-
+                title="Error", description="Please specify a time", color=0xFFC2FF
             )
 
             await ctx.send(embed=embed)
@@ -83,13 +65,9 @@ class MuteCog(commands.Cog):
         if member == None:
 
             embed = discord.Embed(
-
-                title= "Error",
-
-                description= "Please specify a member to jail",
-
-                color= 0xffc2ff
-
+                title="Error",
+                description="Please specify a member to jail",
+                color=0xFFC2FF,
             )
 
             await ctx.send(embed=embed)
@@ -111,13 +89,9 @@ class MuteCog(commands.Cog):
                 await member.add_roles(role)
 
                 embed = discord.Embed(
-
-                    title= "Jail",
-
-                    description= f"{member.mention} has been jail by {ctx.message.author.mention} for {time}s",
-
-                    color=0xffc2ff
-
+                    title="Jail",
+                    description=f"{member.mention} has been jail by {ctx.message.author.mention} for {time}s",
+                    color=0xFFC2FF,
                 )
 
                 await ctx.send(embed=embed)
@@ -125,13 +99,9 @@ class MuteCog(commands.Cog):
                 print(4)
 
                 embed = discord.Embed(
-
-                    title= "Jailed",
-
-                    description= f"You have been jailed in {ctx.guiild.name} by {ctx.author.mention} for {time}",
-
-                    color=0xffc2ff
-
+                    title="Jailed",
+                    description=f"You have been jailed in {ctx.guiild.name} by {ctx.author.mention} for {time}",
+                    color=0xFFC2FF,
                 )
 
                 await member.send(embed=embed)
@@ -146,27 +116,19 @@ class MuteCog(commands.Cog):
 
                 print(6)
 
-             
-
     @tjail.error
-
     async def tjail_error(self, ctx, error):
 
         if isinstance(error, commands.MissingPermissions):
 
             embed = discord.Embed(
-
                 title="Error",
-
                 description="You do not have permissions to temp-jail members!",
-
-                color=0xffc2ff
-
+                color=0xFFC2FF,
             )
 
             await ctx.send(embed=embed)
 
-            
 
 def setup(bot):
 

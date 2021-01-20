@@ -1,4 +1,5 @@
 from io import BytesIO
+
 import discord
 import matplotlib.pyplot as plt
 from redbot.core.utils import chat_formatting as chat
@@ -7,7 +8,11 @@ from redbot.vendored.discord.ext import menus
 
 class WSStatsMenu(menus.MenuPages, inherit_buttons=False):
     def __init__(
-        self, source: menus.PageSource, header: str, timeout: int = 30, image: BytesIO = None
+        self,
+        source: menus.PageSource,
+        header: str,
+        timeout: int = 30,
+        image: BytesIO = None,
     ):
         super().__init__(
             source,
@@ -28,7 +33,8 @@ class WSStatsMenu(menus.MenuPages, inherit_buttons=False):
         page = await self._source.get_page(0)
         kwargs = await self._get_kwargs_from_page(page)
         msg = await channel.send(
-            **kwargs, file=discord.File(self.image, filename="chart.png") if self.image else None
+            **kwargs,
+            file=discord.File(self.image, filename="chart.png") if self.image else None,
         )
         if self.image:
             self.image.close()
@@ -52,14 +58,18 @@ class WSStatsMenu(menus.MenuPages, inherit_buttons=False):
         await self.show_page(0)
 
     @menus.button(
-        "\N{BLACK LEFT-POINTING TRIANGLE}\ufe0f", position=menus.First(1), skip_if=not_paginating
+        "\N{BLACK LEFT-POINTING TRIANGLE}\ufe0f",
+        position=menus.First(1),
+        skip_if=not_paginating,
     )
     async def go_to_previous_page(self, payload):
         """go to the previous page"""
         await self.show_checked_page(self.current_page - 1)
 
     @menus.button(
-        "\N{BLACK RIGHT-POINTING TRIANGLE}\ufe0f", position=menus.Last(0), skip_if=not_paginating
+        "\N{BLACK RIGHT-POINTING TRIANGLE}\ufe0f",
+        position=menus.Last(0),
+        skip_if=not_paginating,
     )
     async def go_to_next_page(self, payload):
         """go to the next page"""
@@ -93,7 +103,10 @@ def create_counter_chart(data, title: str):
     most_common = data.most_common()
     total = sum(data.values())
     sizes = [(x[1] / total) * 100 for x in most_common][:20]
-    labels = [f"{round(sizes[index], 1):.2f}% {x[0]}" for index, x in enumerate(most_common[:20])]
+    labels = [
+        f"{round(sizes[index], 1):.2f}% {x[0]}"
+        for index, x in enumerate(most_common[:20])
+    ]
     if len(most_common) > 20:
         others = sum([x[1] / total for x in most_common[20:]])
         sizes.append(others)
