@@ -1,4 +1,3 @@
-
 import re
 
 from discord.ext import commands
@@ -26,6 +25,7 @@ def box(text: str, lang: str = "") -> str:
     ret = "```{}\n{}\n```".format(lang, text)
     return ret
 
+
 def cleanup_code(content):
     """Automatically removes code blocks from the code."""
     # remove ```py\n```
@@ -34,6 +34,8 @@ def cleanup_code(content):
 
     # remove `foo`
     return content.strip("` \n")
+
+
 class JS(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -44,9 +46,11 @@ class JS(commands.Cog):
         """Attempts to exec plain javascript."""
         async with ctx.typing():
             try:
-                exec_shit = await bot.loop.run_in_executor(None, evaljs, cleanup_code(js))
-                except JSRuntimeError as e:
-                    exec_shit = e
+                exec_shit = await bot.loop.run_in_executor(
+                    None, evaljs, cleanup_code(js)
+                )
+            except JSRuntimeError as e:
+                exec_shit = e
                 await ctx.send(box(exec_shit, "js"))
             await ctx.message.add_reaction(":ok_hand:")
 
