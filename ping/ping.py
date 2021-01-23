@@ -35,7 +35,7 @@ class Ping(commands.Cog):
             number += ms
         average = round(number / len(pings))
         await ctx.send(
-            f"__**Ping Times:**__\nTyping: `{typingms}ms`  |  Latency: `{latencyms}ms`\nDiscord: `{discordms}`  |  Average: `{average}ms`"
+            f"__**Pong:**__\nTyping: `{typingms}ms`  |  Latency: `{latencyms}ms`\nDiscord: `{discordms}`  |  Average: `{average}ms`"
         )
 
 
