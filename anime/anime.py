@@ -1288,7 +1288,3 @@ class Anime(commands.Cog):
                     color=discord.Color.random(),
                 )
                 await ctx.channel.send(embed=embed)
-
-async def setup(bot):
-    n = Anime(bot)
-    bot.add_cog(n)
