@@ -6,7 +6,7 @@ from html.parser import HTMLParser
 from typing import Any, Dict, List, Optional
 
 import aiohttp
-from redbot.vendored.discord.ext import menus
+from discord.ext import menus
 
 ANILIST_API_ENDPOINT = "https://graphql.anilist.co"
 
