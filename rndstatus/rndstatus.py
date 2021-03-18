@@ -39,10 +39,10 @@ class CustomStatus(commands.Cog):
     @status_group.command(name="start")
     async def statusy_start(self, ctx):
         if (
-            self.first == None
-            or self.second == None
-            or self.third == None
-            or self.fourth == None
+            self.first is None
+            or self.second is None
+            or self.third is None
+            or self.fourth is None
         ):
             await ctx.send("Please set the 4 Status's first!")
         else:
@@ -53,7 +53,7 @@ class CustomStatus(commands.Cog):
 
     @status_group.command(name="one")
     async def first_set(self, ctx, *, first):
-        if first == None:
+        if first is None:
             await ctx.send("Please choose something to set!")
         else:
             self.first = first
@@ -61,7 +61,7 @@ class CustomStatus(commands.Cog):
 
     @status_group.command(name="two")
     async def second_set(self, ctx, *, two):
-        if two == None:
+        if two is None:
             await ctx.send("Please choose something to set!")
         else:
             self.second = two
@@ -69,7 +69,7 @@ class CustomStatus(commands.Cog):
 
     @status_group.command(name="three")
     async def third_set(self, ctx, *, three):
-        if three == None:
+        if three is None:
             await ctx.send("Please choose something to set!")
         else:
             self.third = three
@@ -77,7 +77,7 @@ class CustomStatus(commands.Cog):
 
     @status_group.command(name="four")
     async def fourth_set(self, ctx, *, four):
-        if four == None:
+        if four is None:
             await ctx.send("Please choose something to set!")
         else:
             self.fourth = four

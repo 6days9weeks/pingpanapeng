@@ -201,7 +201,7 @@ class GiveawayPlugin(commands.Cog):
             )
 
         def cancel_check(msg: discord.Message):
-            return msg.content == "cancel" or msg.content == f"{ctx.prefix}cancel"
+            return msg.content in ["cancel", f"{ctx.prefix}cancel"]
 
         embed = discord.Embed(colour=0xFFCFF2)
 

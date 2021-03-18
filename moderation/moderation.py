@@ -34,11 +34,11 @@ class Moderation(commands.Cog):
     async def on_guild_channel_create(self, channel):
         """Sets up mute role permissions for the channel."""
         muterole = await self.db.find_one({"_id": "muterole"})
-        if muterole == None:
+        if muterole is None:
             return
 
         role = channel.guild.get_role(muterole["id"])
-        if role == None:
+        if role is None:
             return
         await channel.set_permissions(role, send_messages=False)
 
@@ -46,7 +46,7 @@ class Moderation(commands.Cog):
     @checks.has_permissions(PermissionLevel.MODERATOR)
     async def setlog(self, ctx, channel: discord.TextChannel = None):
         """Sets up a log channel."""
-        if channel == None:
+        if channel is None:
             return await ctx.send_help(ctx.command)
 
         try:
@@ -84,22 +84,21 @@ class Moderation(commands.Cog):
     async def muterole(self, ctx, role: discord.Role = None):
         """Sets up the muted role."""
         if role is None:
-            if (await self.db.find_one({"_id": "muterole"})) is not None:
-                if (
-                    ctx.guild.get_role(
-                        (await self.db.find_one({"_id": "muterole"}))["id"]
+            if (await self.db.find_one({"_id": "muterole"})) is not None and (
+                ctx.guild.get_role(
+                    (await self.db.find_one({"_id": "muterole"}))["id"]
+                )
+                != None
+            ):
+                return await ctx.send(
+                    embed=discord.Embed(
+                        title="Error",
+                        description="Muted role is already set up.",
+                        color=discord.Color.red(),
+                    ).set_footer(
+                        text="If you want to change role, just mention it."
                     )
-                    != None
-                ):
-                    return await ctx.send(
-                        embed=discord.Embed(
-                            title="Error",
-                            description="Muted role is already set up.",
-                            color=discord.Color.red(),
-                        ).set_footer(
-                            text="If you want to change role, just mention it."
-                        )
-                    )
+                )
             role = await ctx.guild.create_role(name="Muted")
 
         await self.db.find_one_and_update(
@@ -120,12 +119,11 @@ class Moderation(commands.Cog):
         """
         Warns the specified member.
         """
-        if member == None:
+        if member is None:
             return await ctx.send_help(ctx.command)
 
-        if reason != None:
-            if not reason.endswith("."):
-                reason = reason + "."
+        if reason != None and not reason.endswith("."):
+            reason = reason + "."
 
         case = await self.get_case()
 
@@ -165,12 +163,11 @@ class Moderation(commands.Cog):
     @checks.has_permissions(PermissionLevel.MODERATOR)
     async def kick(self, ctx, member: discord.Member = None, *, reason=None):
         """Kicks the specified member."""
-        if member == None:
+        if member is None:
             return await ctx.send_help(ctx.command)
 
-        if reason != None:
-            if not reason.endswith("."):
-                reason = reason + "."
+        if reason != None and not reason.endswith("."):
+            reason = reason + "."
 
         msg = f"You have been kicked from {ctx.guild.name}" + (
             f" for: {reason}" if reason else "."
@@ -215,12 +212,11 @@ class Moderation(commands.Cog):
     @checks.has_permissions(PermissionLevel.MODERATOR)
     async def ban(self, ctx, member: discord.Member = None, *, reason=None):
         """Bans the specified member."""
-        if member == None:
+        if member is None:
             return await ctx.send_help(ctx.command)
 
-        if reason != None:
-            if not reason.endswith("."):
-                reason = reason + "."
+        if reason != None and not reason.endswith("."):
+            reason = reason + "."
 
         msg = f"You have been banned from {ctx.guild.name}" + (
             f" for: {reason}" if reason else "."
@@ -265,7 +261,7 @@ class Moderation(commands.Cog):
     @checks.has_permissions(PermissionLevel.MODERATOR)
     async def mute(self, ctx, member: discord.Member = None, *, reason=None):
         """Mutes the specified member."""
-        if member == None:
+        if member is None:
             return await ctx.send_help(ctx.command)
         role = await self.db.find_one({"_id": "muterole"})
         no_role = False
@@ -273,12 +269,11 @@ class Moderation(commands.Cog):
             no_role = True
         elif "id" in role:
             role = ctx.guild.get_role(role["id"])
-            if role == None:
+            if role is None:
                 no_role = True
 
-        if reason != None:
-            if not reason.endswith("."):
-                reason = reason + "."
+        if reason != None and not reason.endswith("."):
+            reason = reason + "."
 
         if no_role:
             return await ctx.send(
@@ -335,7 +330,7 @@ class Moderation(commands.Cog):
     @checks.has_permissions(PermissionLevel.MODERATOR)
     async def unmute(self, ctx, member: discord.Member = None, *, reason=None):
         """Unmutes the specified member."""
-        if member == None:
+        if member is None:
             return await ctx.send_help(ctx.command)
         role = await self.db.find_one({"_id": "muterole"})
         no_role = False
@@ -343,12 +338,11 @@ class Moderation(commands.Cog):
             no_role = True
         elif "id" in role:
             role = ctx.guild.get_role(role["id"])
-            if role == None:
+            if role is None:
                 no_role = True
 
-        if reason != None:
-            if not reason.endswith("."):
-                reason = reason + "."
+        if reason != None and not reason.endswith("."):
+            reason = reason + "."
 
         if no_role:
             return await ctx.send(
@@ -518,13 +512,11 @@ class Moderation(commands.Cog):
     async def get_case(self):
         """Gives the case number."""
         num = await self.db.find_one({"_id": "cases"})
-        if num == None:
+        if num is None or "amount" not in num:
             num = 0
-        elif "amount" in num:
+        else:
             num = num["amount"]
             num = int(num)
-        else:
-            num = 0
         num += 1
         await self.db.find_one_and_update(
             {"_id": "cases"}, {"$set": {"amount": num}}, upsert=True
@@ -540,7 +532,7 @@ class Moderation(commands.Cog):
         if channel == None:
             return
         channel = self.bot.get_channel(channel["id"])
-        if channel == None:
+        if channel is None:
             return
         return await channel.send(embed=embed)
 

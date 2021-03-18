@@ -67,10 +67,7 @@ class AnimeThemesClient:
             headers (dict, optional): HTTP headers used in the request.
         """
         self.session = session
-        if headers:
-            self.headers = headers
-        else:
-            self.headers = {}
+        self.headers = headers or {}
 
     async def __aenter__(self):
         return self
@@ -122,8 +119,7 @@ class AnimeThemesClient:
             endpoint (str): The API endpoint.
             parameters (str): The query parameters.
         """
-        request_url = f"{ANIMETHEMES_BASE_URL}/{endpoint}{parameters}"
-        return request_url
+        return f"{ANIMETHEMES_BASE_URL}/{endpoint}{parameters}"
 
     async def search(
         self, query: str, limit: Optional[int] = 5, fields: Optional[List[str]] = None
@@ -199,10 +195,9 @@ def get_media_title(data: Dict[str, Any]) -> str:
     Returns the media title.
     """
     if data.get("english") is None or data.get("english") == data.get("romaji"):
-        title = data.get("romaji")
+        return data.get("romaji")
     else:
-        title = "{} ({})".format(data.get("romaji"), data.get("english"))
-    return title
+        return "{} ({})".format(data.get("romaji"), data.get("english"))
 
 
 def get_media_stats(format_: str, type_: str, status: str, mean_score: int) -> str:
@@ -220,8 +215,7 @@ def get_media_stats(format_: str, type_: str, status: str, mean_score: int) -> s
     anime_stats.append(anime_status)
     anime_score = "Score: " + str(mean_score) if mean_score else "N/A"
     anime_stats.append(anime_score)
-    stats = " | ".join(anime_stats)
-    return stats
+    return " | ".join(anime_stats)
 
 
 def get_char_staff_name(data: Dict[str, Any]) -> str:
@@ -288,8 +282,7 @@ def clean_html(raw_text) -> str:
     Removes the unwanted html tags.
     """
     clean = re.compile("<.*?>")
-    clean_text = re.sub(clean, "", raw_text)
-    return clean_text
+    return re.sub(clean, "", raw_text)
 
 
 def format_description(description: str, length: int) -> str:
@@ -313,8 +306,7 @@ def format_date(day: int, month: int, year: int) -> str:
     """
     month = datetime.date(1900, month, 1).strftime("%B")
     month_day = month + " " + str(day)
-    date = "{}, {}".format(month_day, year)
-    return date
+    return "{}, {}".format(month_day, year)
 
 
 def is_adult(data: Dict[str, Any]) -> bool:
@@ -325,6 +317,4 @@ def is_adult(data: Dict[str, Any]) -> bool:
         return True
     if data.get("is_adult") is True:
         return True
-    if data.get("nsfw") is True:
-        return True
-    return False
+    return data.get("nsfw") is True

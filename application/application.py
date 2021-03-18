@@ -275,12 +275,13 @@ class Application(commands.Cog):
             )
         except TypeError:
             accepter = None
-        if not accepter:
-            if not ctx.author.guild_permissions.administrator:
-                return await ctx.send("Uh oh, you cannot use this command.")
-        else:
-            if accepter not in ctx.author.roles:
-                return await ctx.send("Uh oh, you cannot use this command.")
+        if (
+            not accepter
+            and not ctx.author.guild_permissions.administrator
+            or accepter
+            and accepter not in ctx.author.roles
+        ):
+            return await ctx.send("Uh oh, you cannot use this command.")
         try:
             applicant = get(
                 ctx.guild.roles, id=await self.config.guild(ctx.guild).applicant_id()
@@ -289,10 +290,10 @@ class Application(commands.Cog):
             applicant = None
         if not applicant:
             applicant = get(ctx.guild.roles, name="Staff Applicant")
-            if not applicant:
-                return await ctx.send(
-                    "Uh oh, the configuration is not correct. Ask the Admins to set it."
-                )
+        if not applicant:
+            return await ctx.send(
+                "Uh oh, the configuration is not correct. Ask the Admins to set it."
+            )
         role = MessagePredicate.valid_role(ctx)
         if applicant in target.roles:
             await ctx.send(f"What role do you want to accept {target.name} as?")

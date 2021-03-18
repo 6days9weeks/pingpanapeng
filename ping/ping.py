@@ -13,7 +13,6 @@ class Ping(commands.Cog):
     async def pingt(self, ctx):
         """ Pong! """
         pings = []
-        number = 0
         typings = time.monotonic()
         async with ctx.typing():
             typinge = time.monotonic()
@@ -31,8 +30,7 @@ class Ping(commands.Cog):
                 discordms = f"{discordms}ms"
             else:
                 discordms = "Failed"
-        for ms in pings:
-            number += ms
+        number = sum(pings)
         average = round(number / len(pings))
         await ctx.send(
             f"__**Pong:**__\nTyping: `{typingms}ms`  |  Latency: `{latencyms}ms`\nDiscord: `{discordms}`  |  Average: `{average}ms`"
