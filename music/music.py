@@ -156,7 +156,7 @@ class Song:
         self.requester = source.requester
 
     def create_embed(self):
-        embed = (
+        return (
             discord.Embed(
                 title="Now playing",
                 description="```css\n{0.source.title}\n```".format(self),
@@ -171,8 +171,6 @@ class Song:
             .add_field(name="URL", value="[Click]({0.source.url})".format(self))
             .set_thumbnail(url=self.source.thumbnail)
         )
-
-        return embed
 
 
 class SongQueue(asyncio.Queue):
@@ -426,12 +424,9 @@ class music(commands.Cog):
         start = (page - 1) * items_per_page
         end = start + items_per_page
 
-        queue = ""
-        for i, song in enumerate(ctx.voice_state.songs[start:end], start=start):
-            queue += "`{0}.` [**{1.source.title}**]({1.source.url})\n".format(
+        queue = "".join("`{0}.` [**{1.source.title}**]({1.source.url})\n".format(
                 i + 1, song
-            )
-
+            ) for i, song in enumerate(ctx.voice_state.songs[start:end], start=start))
         embed = discord.Embed(
             description="**{} tracks:**\n\n{}".format(len(ctx.voice_state.songs), queue)
         ).set_footer(text="Viewing page {}/{}".format(page, pages))
@@ -488,9 +483,11 @@ class music(commands.Cog):
         if not ctx.author.voice or not ctx.author.voice.channel:
             raise commands.CommandError("You are not connected to any voice channel.")
 
-        if ctx.voice_client:
-            if ctx.voice_client.channel != ctx.author.voice.channel:
-                raise commands.CommandError("Bot is already in a voice channel.")
+        if (
+            ctx.voice_client
+            and ctx.voice_client.channel != ctx.author.voice.channel
+        ):
+            raise commands.CommandError("Bot is already in a voice channel.")
 
 
 def setup(bot):

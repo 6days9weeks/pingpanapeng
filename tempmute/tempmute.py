@@ -52,7 +52,7 @@ class MuteCog(commands.Cog):
 
         print(1)
 
-        if time == None:
+        if time is None:
 
             embed = discord.Embed(
                 title="Error", description="Please specify a time", color=0xFFC2FF
@@ -62,7 +62,7 @@ class MuteCog(commands.Cog):
 
             print(2)
 
-        if member == None:
+        if member is None:
 
             embed = discord.Embed(
                 title="Error",
@@ -78,7 +78,7 @@ class MuteCog(commands.Cog):
 
             role = discord.utils.get(ctx.guild.roles, name="horny timeout")
 
-            if role == None:
+            if role is None:
 
                 role = await ctx.guild.create_role(name="horny timeout")
 

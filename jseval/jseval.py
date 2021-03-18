@@ -22,8 +22,7 @@ def box(text: str, lang: str = "") -> str:
         The marked up text.
 
     """
-    ret = "```{}\n{}\n```".format(lang, text)
-    return ret
+    return "```{}\n{}\n```".format(lang, text)
 
 
 def cleanup_code(content):

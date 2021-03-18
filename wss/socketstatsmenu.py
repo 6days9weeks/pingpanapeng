@@ -108,7 +108,7 @@ def create_counter_chart(data, title: str):
         for index, x in enumerate(most_common[:20])
     ]
     if len(most_common) > 20:
-        others = sum([x[1] / total for x in most_common[20:]])
+        others = sum(x[1] / total for x in most_common[20:])
         sizes.append(others)
         labels.append("{:.2f}% Others".format(others))
     title = plt.title(title, color="white")
